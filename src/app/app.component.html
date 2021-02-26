@@ -1,9 +1,5 @@
-<div *ngIf="isLoggedIn; else toHome">
-  <app-stepper></app-stepper>
-  <app-titlebar></app-titlebar>
+<div *ngIf="isLoggedIn">
+  <app-authenticated></app-authenticated>
 </div>
-<ng-template #toHome>
-  <app-home></app-home>
-</ng-template>
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 <app-footer></app-footer>

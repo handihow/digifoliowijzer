@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-titlebar',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./titlebar.component.css']
 })
 export class TitlebarComponent implements OnInit {
+  
+  @Input() title: string = '';
+  @Input() subtitle: string = '';
+  @Input() color: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  
 }
