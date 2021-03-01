@@ -1,0 +1,13 @@
+#container {
+  /* width: 100px;
+  height: 100px; */
+  position: relative;
+}
+
+#backpack-image {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 45%;
+  left: 35%;
+}

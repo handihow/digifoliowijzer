@@ -1,7 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
-import {Subscription} from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -9,21 +6,19 @@ import { AuthService } from './auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy {
-  userSub: Subscription;
-  isLoggedIn: boolean = false;
+export class AppComponent implements OnInit {
 
   constructor(private authService: AuthService) {
-  	this.userSub = this.authService.getCurrentUser().subscribe(user => {
-  		if(user){
-  			this.isLoggedIn = true;
-  		} else {
-  			this.isLoggedIn = false;
-  		}
-  	})
   }
 
-  ngOnDestroy(){
-  	this.userSub.unsubscribe();
+  ngOnInit(){
+    this.authService.observeAuthState().subscribe((user) => {
+      if (user) {
+        this.authService.setUser(user);
+      } else {
+        this.authService.unsetUser();
+      }
+    });
   }
+
 }

@@ -1,30 +1,101 @@
 import { Injectable } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
+import { UserState, MoSCoWRequirement } from './auth/user.state.model';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
+  private _initialUserState: UserState = {
+    id: '',
+    currentPage: '/login',
+    createdAt: firebase.firestore.Timestamp.now(),
+    updatedAt: firebase.firestore.Timestamp.now(),
+  };
 
-  constructor(public auth: AngularFireAuth, private router: Router) { }
+  private _userState: BehaviorSubject<UserState> = new BehaviorSubject(this._initialUserState);
 
-  getCurrentUser() {
-  	return this.auth.authState;
+  public readonly userState: Observable<UserState> = this._userState.asObservable();
+
+  constructor(
+    public auth: AngularFireAuth,
+    private router: Router,
+    private db: AngularFirestore
+  ) { }
+
+  observeAuthState(){
+    return this.auth.authState;
+  }
+
+  setUser(user: firebase.User){
+    this.db
+      .collection('users')
+      .doc(user.uid)
+      .valueChanges()
+      .subscribe((data) => {
+        if (data) {
+          const userState = data as UserState;
+          this._userState.next(userState);
+          this.router.navigateByUrl(userState.currentPage);
+        } else {
+          this.db.collection('users').doc(user.uid).set(this._createDefaultUserState(user.uid));
+          this.router.navigateByUrl('/auth');
+        }
+      });
+  }
+
+  unsetUser(){
+    this._userState.next(this._initialUserState);
+    this.router.navigateByUrl('/login');
   }
 
   login() {
-    this.auth.signInAnonymously()
-    .then(_ => {
-    	this.router.navigateByUrl("/auth");
-    });
+    this.auth.signInAnonymously();
   }
 
   logout() {
-    this.auth.signOut()
-    .then(_ => {
-      this.router.navigateByUrl("/login");
-    });;
+    this.auth.signOut();
+  }
+
+  private _createDefaultUserState = (userId: string) : UserState => {
+    const defaultUserState : UserState = {
+      id: userId,
+      currentPage: '/auth',
+      createdAt: firebase.firestore.Timestamp.now(),
+      updatedAt: firebase.firestore.Timestamp.now(),
+      portfolioRequirements: {
+        development: {
+          fourToSix: MoSCoWRequirement.WONT,
+          sevenToNine: MoSCoWRequirement.COULD,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+        evaluation: {
+          fourToSix: MoSCoWRequirement.COULD,
+          sevenToNine: MoSCoWRequirement.MUST,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+        presentation: {
+          fourToSix: MoSCoWRequirement.MUST,
+          sevenToNine: MoSCoWRequirement.MUST,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+      }
+    }
+    return defaultUserState;
+  }
+
+  updateUserState(userId: string, data: UserState) {
+    this.db.collection('users').doc(userId).set(data);
+  }
+
+  updateUserStateComponentStep(userId: string, step: number) {
+    this.db.collection('users').doc(userId).update({
+      componentStep: step,
+      updatedAt: firebase.firestore.Timestamp.now(),
+    });
   }
 }

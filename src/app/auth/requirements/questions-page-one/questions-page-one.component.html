@@ -1,0 +1,39 @@
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns mb-5 is-mobile">
+      <div class="column">
+        <h5 class="title is-6">Type portfolio</h5>
+      </div>
+      <div class="column">
+        <h5 class="title is-6">Ontwikkeling (proces)</h5>
+      </div>
+      <div class="column">
+        <h5 class="title is-6">Beoordeling (evaluatie)</h5>
+      </div>
+      <div class="column">
+        <h5 class="title is-6">Presentatie (product)</h5>
+      </div>
+    </div>
+    <div class="columns is-mobile" *ngFor="let row of rows">
+      <div class="column">
+        <h5 class="title is-6">{{row.title}}</h5>
+      </div>
+      <div class="column">
+        <app-moscow-slider [initialValue]="getPortfolioRequirementValue('development', row.property)"></app-moscow-slider>
+      </div>
+      <div class="column">
+        <app-moscow-slider [initialValue]="getPortfolioRequirementValue('evaluation', row.property)"></app-moscow-slider>
+      </div>
+      <div class="column">
+        <app-moscow-slider [initialValue]="getPortfolioRequirementValue('presentation', row.property)"></app-moscow-slider>
+      </div>
+    </div>
+    <hr>
+    <div class="is-flex is-justify-content-space-between">
+      <button class="button" (click)="goToStep(1)">Terug</button>
+      <button class="button is-primary is-medium is-light"
+        (click)="goToStep(3)">Volgende</button>
+    </div>
+  </div>
+</section>

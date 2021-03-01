@@ -1,1 +1,8 @@
-<p>requirements works!</p>
+<app-requirements-information
+  *ngIf="step===1"
+  (toNextStep)="setStep(2)"
+  ></app-requirements-information>
+<app-questions-page-one
+  *ngIf="step===2"
+  [userState]="userState"
+  (toStep)="setStep($event)"></app-questions-page-one>

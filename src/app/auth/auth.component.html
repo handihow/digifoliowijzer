@@ -1,4 +1,5 @@
+<div *ngIf="userState !== undefined">
 <app-stepper [step]="controls[currentUrl]?.step"></app-stepper>
-<app-titlebar [title]="controls[currentUrl]?.title" 
-			  [subtitle]="controls[currentUrl]?.subtitle" 
-				[color]="controls[currentUrl]?.color"></app-titlebar>
+<app-titlebar [title]="controls[currentUrl]?.title"
+			  [subtitle]="controls[currentUrl]?.subtitle"
+				[color]="controls[currentUrl]?.color"></app-titlebar></div>

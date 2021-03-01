@@ -11,6 +11,9 @@ import { InformationComponent } from './information/information.component';
 import { ChoicesComponent } from './choices/choices.component';
 import { RequirementsComponent } from './requirements/requirements.component';
 import { OverviewComponent } from './overview/overview.component';
+import { RequirementsInformationComponent } from './requirements/requirements-information/requirements-information.component';
+import { QuestionsPageOneComponent } from './requirements/questions-page-one/questions-page-one.component';
+import { MoscowSliderComponent } from './moscow-slider/moscow-slider.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { OverviewComponent } from './overview/overview.component';
 	  InformationComponent,
 	  ChoicesComponent,
 	  RequirementsComponent,
-	  OverviewComponent
+	  OverviewComponent,
+	  RequirementsInformationComponent,
+	  QuestionsPageOneComponent,
+	  MoscowSliderComponent
   ],
   imports: [
     CommonModule,
