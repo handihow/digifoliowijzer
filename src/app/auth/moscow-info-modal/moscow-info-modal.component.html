@@ -1,0 +1,39 @@
+<div class="modal" [ngClass]="{'is-active': showModal}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">MoSCoW methode</p>
+      <button class="delete" aria-label="close" (click)="onClose()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+      <p>
+        We maken gebruik van de MoSCoW-methode waarmee de eisen aan het digitale portfolio worden ingedeeld. Het is een
+        afkorting, waarvan de letters staan voor:
+      </p>
+      <ul>
+        <li>
+          <strong>M - must haves</strong>: deze eisen moeten in het eindresultaat terugkomen,
+          zonder deze eisen is het product niet bruikbaar;
+        </li>
+        <li>
+          <strong>S - should haves</strong>: deze eisen zijn zeer gewenst, maar zonder is het
+          product wel bruikbaar;
+        </li>
+        <li>
+          <strong>C - could haves</strong>: deze eisen zullen alleen aan bod komen als er tijd
+          genoeg is;
+        </li>
+        <li>
+          <strong>W - won't haves</strong> (ook wel would haves genoemd): deze eisen zullen in
+          dit project niet aan bod komen maar kunnen in de toekomst, bij een
+          vervolgproject, interessant zijn.
+        </li>
+      </ul>
+    </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="onClose()">Duidelijk</button>
+    </footer>
+  </div>
+</div>

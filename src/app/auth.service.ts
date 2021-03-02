@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
-import { UserState, MoSCoWRequirement } from './auth/user.state.model';
+import { UserState, MoSCoWRequirement, PortfolioType } from './auth/user.state.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import Row from './auth/moscow.row.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,21 @@ export class AuthService {
   private _userState: BehaviorSubject<UserState> = new BehaviorSubject(this._initialUserState);
 
   public readonly userState: Observable<UserState> = this._userState.asObservable();
+
+  private _rows: Row[] = [
+    {
+      title: '4-6 jaar',
+      property: 'fourToSix',
+    },
+    {
+      title: '7-9 jaar',
+      property: 'sevenToNine',
+    },
+    {
+      title: '10-12 jaar',
+      property: 'tenToTwelve',
+    },
+  ];
 
   constructor(
     public auth: AngularFireAuth,
@@ -83,6 +99,11 @@ export class AuthService {
           sevenToNine: MoSCoWRequirement.MUST,
           tenToTwelve: MoSCoWRequirement.MUST
         },
+      },
+      portfolioType: {
+        fourToSix: PortfolioType.PAPER,
+        sevenToNine: PortfolioType.MIXED,
+        tenToTwelve: PortfolioType.DIGITAL
       }
     }
     return defaultUserState;
@@ -97,5 +118,9 @@ export class AuthService {
       componentStep: step,
       updatedAt: firebase.firestore.Timestamp.now(),
     });
+  }
+
+  getRows(){
+    return [... this._rows];
   }
 }

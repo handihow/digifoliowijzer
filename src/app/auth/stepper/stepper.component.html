@@ -1,12 +1,36 @@
-<div class="level p-5">
-  <div class="level-left">
-    {{step}}
-  </div>
-
-  <div class="level-right">
-    <button class="button" (click)="logout()">Log uit</button>
-  </div>
+<div class="p-5">
+  <ul class="steps has-content-centered has-gaps is-horizontal">
+    <li class="steps-segment" [ngClass]="{ 'is-active': step === 1 }">
+      <span class="steps-marker is-warning">1</span>
+      <div class="steps-content">
+        <a class="is-size-6 has-text-dark" routerLink="/auth/information"
+          >Informatie vooraf</a
+        >
+      </div>
+    </li>
+    <li class="steps-segment" [ngClass]="{ 'is-active': step === 2 }">
+      <span class="steps-marker is-info">2</span>
+      <div class="steps-content">
+        <a class="is-size-6 has-text-dark" routerLink="/auth/choices"
+          >Keuzes maken</a
+        >
+      </div>
+    </li>
+    <li class="steps-segment" [ngClass]="{ 'is-active': step === 3 }">
+      <span class="steps-marker is-primary">3</span>
+      <div class="steps-content">
+        <a class="is-size-6 has-text-dark" routerLink="/auth/requirements"
+          >Set van eisen</a
+        >
+      </div>
+    </li>
+    <li class="steps-segment" [ngClass]="{ 'is-active': step === 4 }">
+      <span class="steps-marker is-success">4</span>
+      <div class="steps-content">
+        <a class="is-size-6 has-text-dark" routerLink="/auth/overview"
+          >Overzicht en rapport</a
+        >
+      </div>
+    </li>
+  </ul>
 </div>
-
-
-<!-- <h1 class="title" [ngClass]="{'is-4': getActiveStep() === 2}">{{currentUrl}}</h1> -->

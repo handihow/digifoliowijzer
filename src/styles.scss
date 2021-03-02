@@ -6,5 +6,9 @@ $warning: $orange;
 $navbar-height: 4rem;
 $navbar-item-img-max-height: 2.5rem;
 $family-sans-serif: 'Noto Sans';
+$hero-body-padding: 3rem 3rem;
 /* You can add global styles to this file, and also import other style files */
 @import "bulma";
+@import '~@creativebulma/bulma-tooltip';
+@import '~bulma-slider';
+@import '~bulma-o-steps/bulma-steps.sass';

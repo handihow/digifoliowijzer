@@ -1,0 +1,11 @@
+<div class="columns is-mobile" *ngFor="let row of rows">
+  <div class="column">
+    <h5 class="title is-6">{{ row.title }}</h5>
+  </div>
+  <div class="column" *ngFor="let column of columns">
+    <app-moscow-buttons
+      [initialValue]="getRequirementValue(column, row.property)"
+      (changedValue)="updateValue($event, column, row.property)"
+    ></app-moscow-buttons>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { UserState } from '../user.state.model';
-import firebase from 'firebase/app';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -18,13 +17,11 @@ export class RequirementsComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-
     this.stateSub = this.authService.userState.subscribe(state => {
       if(state.id.length === 0) return;
       this.userState = state;
       this.step = this.userState.componentStep || 1;
     });
-
   }
 
   ngOnDestroy(): void {
@@ -34,7 +31,6 @@ export class RequirementsComponent implements OnInit, OnDestroy {
   }
 
   setStep(step: number){
-    this.step = step;
     if(this.userState){
       this.authService.updateUserStateComponentStep(this.userState.id, step);
     }

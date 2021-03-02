@@ -1,0 +1,23 @@
+<div class="columns is-mobile">
+  <div class="column" *ngFor="let title of titles; let i = index">
+    <div class="level is-marginless">
+      <div class="level-left">
+        <div class="level-item">
+          <div class="title is-6">{{ title.title }}</div>
+        </div>
+        <div class="level-item" *ngIf="title.hasInfoBtn">
+          <button
+            class="button is-rounded is-info is-light has-tooltip-arrow has-tooltip-info"
+            (click)="openModal(i)"
+            data-tooltip="Klik voor meer informatie"
+          >
+            <fa-icon [icon]="faInfo"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="subtitle is-6" *ngIf="title.hasSubtitle">
+      {{ title.subtitle }}
+    </div>
+  </div>
+</div>

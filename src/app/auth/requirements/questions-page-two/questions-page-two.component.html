@@ -1,0 +1,54 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-hidden-mobile">
+      <div class="column">
+        Papier of digitaal?
+      </div>
+      <div class="column">
+        <div class="level">
+          <div class="level-left">
+            <span class="icon"><fa-icon [icon]="faArrowLeft"></fa-icon></span>
+            Fysiek
+          </div>
+          <div class="level-right">
+            Digitaal
+            <span class="icon"><fa-icon [icon]="faArrowRight"></fa-icon></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns" *ngFor="let row of rows">
+      <div class="column">
+        <div class="level is-mobile mt-4">
+          <div class="level-left">
+            <h5 class="title is-6">
+              {{ row.title }}
+            </h5>
+          </div>
+          <div class="level-item is-hidden-tablet">
+            <span class="icon"><fa-icon [icon]="faArrowLeft"></fa-icon></span>
+            Fysiek
+          </div>
+          <div class="level-item is-hidden-tablet">
+            Digitaal
+            <span class="icon"><fa-icon [icon]="faArrowRight"></fa-icon></span>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <input
+          class="slider is-primary is-circle is-fullwidth"
+          step="1"
+          min="0"
+          max="2"
+          value="1"
+          type="range"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-component-step-buttons
+  buttonColorClass="is-primary"
+></app-component-step-buttons>

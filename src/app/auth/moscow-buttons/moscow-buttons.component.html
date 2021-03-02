@@ -1,0 +1,11 @@
+<div class="buttons has-addons">
+  <button
+    *ngFor="let requirement of requirements"
+    class="button has-tooltip-arrow"
+    [ngClass]="[value === requirement.value ? 'is-selected ' + requirement.cssClass : '' ]"
+    (click)="setValue(requirement.value)"
+    [attr.data-tooltip]="requirement.tooltip"
+  >
+    {{requirement.buttonText}}
+  </button>
+</div>

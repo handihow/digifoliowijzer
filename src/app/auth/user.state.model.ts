@@ -7,6 +7,12 @@ export enum MoSCoWRequirement {
 	'WONT'
 }
 
+export enum PortfolioType {
+  'PAPER',
+  'MIXED',
+  'DIGITAL'
+}
+
 export interface UserState {
 	id: string;
 	currentPage: string;
@@ -29,7 +35,12 @@ export interface UserState {
 			sevenToNine: MoSCoWRequirement,
 			tenToTwelve: MoSCoWRequirement
 		},
-	}
+	},
+  portfolioType?: {
+    fourToSix: PortfolioType,
+    sevenToNine: PortfolioType,
+    tenToTwelve: PortfolioType
+  }
 
 
 }

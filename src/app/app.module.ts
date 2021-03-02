@@ -29,7 +29,7 @@ import { HomeComponent } from './home/home.component';
     AngularFireAuthModule,
     AngularFireAuthGuardModule,
     AngularFirestoreModule,
-    AuthenticatedModule
+    AuthenticatedModule,
   ],
   providers: [
     ScreenTrackingService
