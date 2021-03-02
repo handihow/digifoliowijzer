@@ -1,8 +1,8 @@
 <section class="section">
-  <div class="container">
+  <div class="container" id="restricted-size">
     <div class="columns is-hidden-mobile">
       <div class="column">
-        Papier of digitaal?
+        <h5 class="title is-6">Papier of digitaal?</h5>
       </div>
       <div class="column">
         <div class="level">
@@ -17,9 +17,9 @@
         </div>
       </div>
     </div>
-    <div class="columns" *ngFor="let row of rows">
+    <div class="columns mb-0" *ngFor="let row of rows">
       <div class="column">
-        <div class="level is-mobile mt-4">
+        <div class="level is-mobile mt-3">
           <div class="level-left">
             <h5 class="title is-6">
               {{ row.title }}
@@ -41,8 +41,9 @@
           step="1"
           min="0"
           max="2"
-          value="1"
+          [value]="getValue(row.property)"
           type="range"
+          (change)="setValue($event, row.property)"
         />
       </div>
     </div>

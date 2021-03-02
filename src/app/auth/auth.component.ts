@@ -63,7 +63,7 @@ export class AuthenticatedComponent implements OnInit {
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((_event) => {
         if (this.userState) {
-          this.authService.updateUserState(this.userState.id, {
+          this.authService.updateUserState({
             ...this.userState,
             updatedAt: firebase.firestore.Timestamp.now(),
             currentPage: this.router.url,

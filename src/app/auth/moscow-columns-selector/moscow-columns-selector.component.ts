@@ -21,8 +21,19 @@ export class MoscowColumnsSelectorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getButtonsAreDisabled(category: string, age: string){
+    if(this.userState && this.property && this.property !== 'portfolioRequirements'){
+      return get(this.userState, ['portfolioRequirements', category, age]) as MoSCoWRequirement === MoSCoWRequirement.WONT;
+    } else {
+      return false;
+    }
+  }
+
   getRequirementValue(category: string, age: string) {
-    if(this.userState && this.property){
+    if(this.userState && this.property && this.property !== 'portfolioRequirements'){
+      const mustReturnWont = get(this.userState, ['portfolioRequirements', category, age]) as MoSCoWRequirement === MoSCoWRequirement.WONT;
+      return mustReturnWont ? MoSCoWRequirement.WONT : get(this.userState, [this.property, category, age]) as MoSCoWRequirement;
+    } else if(this.userState && this.property){
       return get(this.userState, [this.property, category, age]) as MoSCoWRequirement;
     } else {
       return MoSCoWRequirement.WONT;
@@ -32,7 +43,7 @@ export class MoscowColumnsSelectorComponent implements OnInit {
   updateValue(newValue: MoSCoWRequirement, category: string, age: string){
     if(this.userState && this.property){
       set(this.userState, [this.property, category, age], newValue);
-      this.authService.updateUserState(this.userState.id, this.userState);
+      this.authService.updateUserState(this.userState);
     }
   }
 

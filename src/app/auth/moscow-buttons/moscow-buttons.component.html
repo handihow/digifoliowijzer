@@ -2,9 +2,13 @@
   <button
     *ngFor="let requirement of requirements"
     class="button has-tooltip-arrow"
-    [ngClass]="[value === requirement.value ? 'is-selected ' + requirement.cssClass : '' ]"
+    [ngClass]="[
+      value === requirement.value ? 'is-selected ' + requirement.cssClass : '',
+      requirement.value < 2 ? 'has-tooltip-left' : 'has-tooltip-right'
+    ]"
     (click)="setValue(requirement.value)"
-    [attr.data-tooltip]="requirement.tooltip"
+    [attr.data-tooltip]="buttonsDisabled ? 'W gekozen bij portfolio type' : requirement.tooltip"
+    [disabled]="buttonsDisabled"
   >
     {{requirement.buttonText}}
   </button>

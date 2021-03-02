@@ -21,27 +21,28 @@ export class MoscowButtonsComponent implements OnInit {
       value: MoSCoWRequirement.MUST,
       buttonText: 'M',
       cssClass: 'is-success',
-      tooltip: 'M = must haves'
+      tooltip: 'must haves'
     },
     {
       value: MoSCoWRequirement.SHOULD,
       buttonText: 'S',
       cssClass: 'is-link',
-      tooltip: 'S = should haves'
+      tooltip: 'should haves'
     },
     {
       value: MoSCoWRequirement.COULD,
       buttonText: 'C',
       cssClass: 'is-info',
-      tooltip: 'C = chould haves'
+      tooltip: 'chould haves'
     },
     {
       value: MoSCoWRequirement.WONT,
       buttonText: 'W',
       cssClass: 'is-warning',
-      tooltip: 'W = won\'t haves'
+      tooltip: 'won\'t haves'
     }
   ]
+  @Input() buttonsDisabled: boolean = false;
   @Input() initialValue: MoSCoWRequirement | undefined;
   @Output() changedValue: EventEmitter<MoSCoWRequirement> = new EventEmitter();
 

@@ -21,6 +21,8 @@ import { MoscowColumnsSelectorComponent } from './moscow-columns-selector/moscow
 import { MoscowTitleColumnsComponent } from './moscow-title-columns/moscow-title-columns.component';
 import { QuestionsPageTwoComponent } from './requirements/questions-page-two/questions-page-two.component';
 import { ComponentStepButtonsComponent } from './component-step-buttons/component-step-buttons.component';
+import { QuestionsPageThreeComponent } from './requirements/questions-page-three/questions-page-three.component';
+import { QuestionsPageFourComponent } from './requirements/questions-page-four/questions-page-four.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ComponentStepButtonsComponent } from './component-step-buttons/componen
 	  MoscowTitleColumnsComponent,
 	  QuestionsPageTwoComponent,
 	  ComponentStepButtonsComponent,
+	  QuestionsPageThreeComponent,
+	  QuestionsPageFourComponent,
   ],
   imports: [
     CommonModule,

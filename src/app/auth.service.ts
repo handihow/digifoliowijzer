@@ -104,13 +104,47 @@ export class AuthService {
         fourToSix: PortfolioType.PAPER,
         sevenToNine: PortfolioType.MIXED,
         tenToTwelve: PortfolioType.DIGITAL
-      }
+      },
+      childContribution: {
+        development: {
+          fourToSix: MoSCoWRequirement.WONT,
+          sevenToNine: MoSCoWRequirement.COULD,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+        evaluation: {
+          fourToSix: MoSCoWRequirement.COULD,
+          sevenToNine: MoSCoWRequirement.MUST,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+        presentation: {
+          fourToSix: MoSCoWRequirement.MUST,
+          sevenToNine: MoSCoWRequirement.MUST,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+      },
+      parentContribution: {
+        development: {
+          fourToSix: MoSCoWRequirement.WONT,
+          sevenToNine: MoSCoWRequirement.COULD,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+        evaluation: {
+          fourToSix: MoSCoWRequirement.COULD,
+          sevenToNine: MoSCoWRequirement.MUST,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+        presentation: {
+          fourToSix: MoSCoWRequirement.MUST,
+          sevenToNine: MoSCoWRequirement.MUST,
+          tenToTwelve: MoSCoWRequirement.MUST
+        },
+      },
     }
     return defaultUserState;
   }
 
-  updateUserState(userId: string, data: UserState) {
-    this.db.collection('users').doc(userId).set(data);
+  updateUserState(data: UserState) {
+    this.db.collection('users').doc(data.id).set(data);
   }
 
   updateUserStateComponentStep(userId: string, step: number) {
