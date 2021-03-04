@@ -15,6 +15,8 @@ export class ComponentStepButtonsComponent implements OnInit, OnDestroy {
   step: number = 1;
   @Input() buttonColorClass: string = '';
   @Input() isLastStep: boolean = false;
+  @Input() nextComponentRouterLink: string = '';
+  @Input() toNextComponentButtonText: string = '';
 
   constructor(private authService: AuthService) { }
 
@@ -33,8 +35,15 @@ export class ComponentStepButtonsComponent implements OnInit, OnDestroy {
   }
 
   setStep(increase: number){
-    if(this.userState){
-      this.authService.updateUserStateComponentStep(this.userState.id, this.step + increase);
+    if(!this.userState){ return };
+    this.authService.updateUserStateComponentStep(this.userState.id, this.step + increase);
+  }
+
+  async onLastStep(){
+    if(!this.userState){ return };
+    if(this.nextComponentRouterLink === '/auth/overview'){
+      await this.authService.setUserStateToFinished(this.userState.id);
     }
+    this.authService.updateUserStateComponent(this.userState.id,this.nextComponentRouterLink);
   }
 }

@@ -11,16 +11,6 @@ import Row from './auth/moscow.row.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private _initialUserState: UserState = {
-    id: '',
-    currentPage: '/login',
-    createdAt: firebase.firestore.Timestamp.now(),
-    updatedAt: firebase.firestore.Timestamp.now(),
-  };
-
-  private _userState: BehaviorSubject<UserState> = new BehaviorSubject(this._initialUserState);
-
-  public readonly userState: Observable<UserState> = this._userState.asObservable();
 
   private _rows: Row[] = [
     {
@@ -35,6 +25,49 @@ export class AuthService {
       title: '10-12 jaar',
       property: 'tenToTwelve',
     },
+  ];
+
+  private _additionalRequirementRows: Row[] = [
+    {
+      title: "Wil je dat ouders en kinderen ook thuis kunnen inloggen op het digitale portfolio?",
+      property: "canLoginAtHome"
+    },
+    {
+      title: "Wil je dat het digitale portfolio af te drukken is?",
+      property: "canBePrinted"
+    },
+    {
+      title: "Wil je dat het digitale portfolio een automatische koppeling heeft met verwerkingssoftware en/of LOVS?",
+      property: "isLinkedToStudentTrackingSystem"
+    },
+    {
+      title: "Wil je zelf leerlijnen en leerdoelen kunnen toevoegen aan het digitale portfolio?",
+      property: "canBeAddedStudentProgramsAndGoals"
+    },
+    {
+      title: "Wil je dat leerlingen zelf kunnen kiezen en plannen aan welke doelen ze werken?",
+      property: "studentCanCreatePlanning"
+    },
+    {
+      title: "Wil je als leerkracht doelen kunnen selecteren voor kinderen in het digitale portfolio waar een kind een bepaalde periode aan moet werken?",
+      property: "teacherCanSelectGoals"
+    },
+    {
+      title: "Wil je als leerkracht via het digitale portfolio kunnen chatten met kinderen?",
+      property: "hasChatFunctionality"
+    },
+    {
+      title: "Wil je in de omgeving van het digitale portfolio een groepsoverzicht hebben van alle kinderen?",
+      property: "hasGroupOverviewFunctionality"
+    },
+    {
+      title: "Wil je dat verslagjes van kindgesprekken onderdeel worden van je digitale portfolio?",
+      property: "reportsOfConversationsWithStudentsArePartOfPortfolio"
+    },
+    {
+      title: "Wil je dat het digitale portfolio ook fungeert als een communicatiemiddel met ouders voor bijv. het versturen van planningen of nieuwsbrieven?",
+      property: "isCommunicationPlatformWithParents"
+    }
   ];
 
   constructor(
@@ -65,7 +98,7 @@ export class AuthService {
   }
 
   unsetUser(){
-    this._userState.next(this._initialUserState);
+    this._userState.next(this._createDefaultUserState(''));
     this.router.navigateByUrl('/login');
   }
 
@@ -81,6 +114,7 @@ export class AuthService {
     const defaultUserState : UserState = {
       id: userId,
       currentPage: '/auth',
+      componentStep: 1,
       createdAt: firebase.firestore.Timestamp.now(),
       updatedAt: firebase.firestore.Timestamp.now(),
       portfolioRequirements: {
@@ -139,12 +173,40 @@ export class AuthService {
           tenToTwelve: MoSCoWRequirement.MUST
         },
       },
+      additionalRequirements: {
+        canLoginAtHome: MoSCoWRequirement.MUST,
+        canBePrinted: MoSCoWRequirement.MUST,
+        isLinkedToStudentTrackingSystem: MoSCoWRequirement.COULD,
+        canBeAddedStudentProgramsAndGoals: MoSCoWRequirement.WONT,
+        studentCanCreatePlanning: MoSCoWRequirement.COULD,
+        teacherCanSelectGoals: MoSCoWRequirement.SHOULD,
+        hasChatFunctionality: MoSCoWRequirement.MUST,
+        hasGroupOverviewFunctionality: MoSCoWRequirement.WONT,
+        reportsOfConversationsWithStudentsArePartOfPortfolio: MoSCoWRequirement.COULD,
+        isCommunicationPlatformWithParents: MoSCoWRequirement.WONT
+      },
+      canBeUsedOnDevices: 'Computers, laptops en chromebooks',
+      isFinished: false
     }
     return defaultUserState;
   }
 
+  private _userState: BehaviorSubject<UserState> = new BehaviorSubject({
+    ...this._createDefaultUserState(''),
+  });
+
+  public readonly userState: Observable<UserState> = this._userState.asObservable();
+
   updateUserState(data: UserState) {
     this.db.collection('users').doc(data.id).set(data);
+  }
+
+  updateUserStateComponent(userId: string, component: string) {
+    this.db.collection('users').doc(userId).update({
+      componentStep: 1,
+      currentPage: component,
+      updatedAt: firebase.firestore.Timestamp.now(),
+    });
   }
 
   updateUserStateComponentStep(userId: string, step: number) {
@@ -154,7 +216,19 @@ export class AuthService {
     });
   }
 
+  setUserStateToFinished(userId: string){
+    this.db.collection('users').doc(userId).update({
+      isFinished: true,
+      updatedAt: firebase.firestore.Timestamp.now()
+    });
+  }
+
   getRows(){
     return [... this._rows];
   }
+
+  getAdditionalRequirementRows(){
+    return [... this._additionalRequirementRows];
+  }
+
 }

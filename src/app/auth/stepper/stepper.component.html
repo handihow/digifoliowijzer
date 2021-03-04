@@ -1,4 +1,4 @@
-<div class="pt-5 pb-3" id="wrapper">
+<div class="pt-5 pb-3">
   <ul class="steps has-content-centered has-gaps is-horizontal">
     <li class="steps-segment" [ngClass]="{ 'is-active': step === 1 }">
       <span class="steps-marker is-warning">1</span>
@@ -33,15 +33,4 @@
       </div>
     </li>
   </ul>
-  <div id="logoutbtn" class="is-hidden-mobile">
-    <button
-      (click)="logout()"
-      class="button is-rounded has-tooltip-arrow has-tooltip-left has-tooltip-multiline"
-      data-tooltip="Sessie afsluiten. Let op! Gegevens zijn hierna niet meer beschikbaar en je gaat terug naar het beginscherm."
-    >
-      <span class="icon">
-        <fa-icon [icon]="faSignOutAlt"></fa-icon>
-      </span>
-    </button>
-  </div>
 </div>

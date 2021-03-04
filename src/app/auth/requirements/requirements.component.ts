@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { UserState } from '../user.state.model';
 import { Subscription } from 'rxjs';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-requirements',
@@ -10,9 +11,11 @@ import { Subscription } from 'rxjs';
 })
 export class RequirementsComponent implements OnInit, OnDestroy {
 
+  faQuestion = faQuestionCircle;
   step: number = 1;
   userState: UserState | undefined;
   stateSub: Subscription | undefined;
+  showMoscowInfoModal: boolean = false;
 
   constructor(private authService: AuthService) { }
 
@@ -34,6 +37,10 @@ export class RequirementsComponent implements OnInit, OnDestroy {
     if(this.userState){
       this.authService.updateUserStateComponentStep(this.userState.id, step);
     }
+  }
+
+  toggleMoscowInfoModal(){
+    this.showMoscowInfoModal = !this.showMoscowInfoModal;
   }
 
 }

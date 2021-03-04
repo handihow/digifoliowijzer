@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class RequirementsInformationComponent implements OnInit {
 
-  showMoscowInfoModal: boolean = false;
+  @Output() showMoscowInfoModal: EventEmitter<boolean> = new EventEmitter();
   @Output() toNextStep: EventEmitter<boolean> = new EventEmitter();
   @Output() openInfoModal: EventEmitter<boolean> = new EventEmitter();
 
@@ -22,8 +22,7 @@ export class RequirementsInformationComponent implements OnInit {
   }
 
   toggleMoscowInfoModal(){
-    this.showMoscowInfoModal = !this.showMoscowInfoModal;
+    this.showMoscowInfoModal.emit(true);
   }
-
 
 }

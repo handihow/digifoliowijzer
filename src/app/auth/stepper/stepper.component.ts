@@ -1,6 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { AuthService } from '../../auth.service';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-stepper',
@@ -9,15 +7,12 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 })
 export class StepperComponent {
 
-  faSignOutAlt = faSignOutAlt;
   @Input() step: number = 1;
 
-  constructor(private authService: AuthService) {
+  constructor() {
   }
 
-  logout(){
-  	this.authService.logout();
-  }
+
 
 
 }

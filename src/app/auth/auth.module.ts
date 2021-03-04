@@ -23,6 +23,7 @@ import { QuestionsPageTwoComponent } from './requirements/questions-page-two/que
 import { ComponentStepButtonsComponent } from './component-step-buttons/component-step-buttons.component';
 import { QuestionsPageThreeComponent } from './requirements/questions-page-three/questions-page-three.component';
 import { QuestionsPageFourComponent } from './requirements/questions-page-four/questions-page-four.component';
+import { QuestionsPageFiveComponent } from './requirements/questions-page-five/questions-page-five.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { QuestionsPageFourComponent } from './requirements/questions-page-four/q
 	  ComponentStepButtonsComponent,
 	  QuestionsPageThreeComponent,
 	  QuestionsPageFourComponent,
+	  QuestionsPageFiveComponent,
   ],
   imports: [
     CommonModule,

@@ -15,8 +15,7 @@ export class QuestionsPageTwoComponent implements OnInit {
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
   rows: Row[] = [];
-  property: string = 'portfolioType'
-
+  @Input() property: string = 'portfolioType'
   @Input() userState: UserState | undefined;
 
   constructor(private authService: AuthService) { }

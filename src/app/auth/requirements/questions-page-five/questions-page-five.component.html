@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns">
+      <div class="column is-9">
+        <h6 class="title is-6">Aanvullende eisen</h6>
+      </div>
+      <div class="column">
+        <h6 class="title is-6">Classificatie</h6>
+      </div>
+    </div>
+    <div class="columns" *ngFor="let row of rows">
+      <div class="column is-9">
+        {{ row.title }}
+      </div>
+      <div class="column">
+        <app-moscow-buttons
+          [initialValue]="getValue(row.property)"
+          (changedValue)="setValue($event, row.property)"
+        ></app-moscow-buttons>
+      </div>
+    </div>
+    <div class="columns" *ngIf="step===8">
+      <div class="column is-6">
+        Op welke device wil je dat het digitale portfolio goed te gebruiken is?
+        Vul in:
+      </div>
+      <div class="column">
+        <input
+          class="input"
+          type="text"
+          placeholder="Text input"
+          [value]="getTextValue()"
+          (change)="setTextValue($event)"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+<app-component-step-buttons
+  buttonColorClass="is-primary"
+  [isLastStep]="step === 8"
+  toNextComponentButtonText="Naar overzicht"
+  nextComponentRouterLink="/auth/overview"
+></app-component-step-buttons>

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-titlebar',
@@ -6,15 +8,21 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./titlebar.component.css']
 })
 export class TitlebarComponent implements OnInit {
-  
+
+  faSignOutAlt = faSignOutAlt;
+
   @Input() title: string = '';
   @Input() subtitle: string = '';
   @Input() color: string = '';
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  
+  logout(){
+  	this.authService.logout();
+  }
+
+
 }

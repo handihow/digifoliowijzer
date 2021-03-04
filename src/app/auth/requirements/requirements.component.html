@@ -1,6 +1,13 @@
+<div class="has-text-centered mt-2" *ngIf="![1,3].includes(step)">
+  <button class="button is-small is-rounded is-light is-info is-outlined" (click)="toggleMoscowInfoModal()">
+    <span class="icon mr-2"><fa-icon [icon]="faQuestion"></fa-icon></span>
+    <strong>M</strong>o<strong>SC</strong>o<strong>W</strong>
+  </button>
+</div>
 <app-requirements-information
   *ngIf="step === 1"
   (toNextStep)="setStep(2)"
+  (showMoscowInfoModal)="toggleMoscowInfoModal()"
 ></app-requirements-information>
 <app-questions-page-one
   *ngIf="step === 2"
@@ -10,6 +17,7 @@
 <app-questions-page-two
   *ngIf="step === 3"
   [userState]="userState"
+  property="portfolioType"
 ></app-questions-page-two>
 <app-questions-page-three
   *ngIf="step === 4"
@@ -21,3 +29,13 @@
   [userState]="userState"
   property="parentContribution"
 ></app-questions-page-four>
+<app-questions-page-five
+  *ngIf="step > 5"
+  [step]="step"
+  [userState]="userState"
+  property="additionalRequirements"
+></app-questions-page-five>
+<app-moscow-info-modal
+  [showModal]="showMoscowInfoModal"
+  (closedModal)="toggleMoscowInfoModal()"
+></app-moscow-info-modal>

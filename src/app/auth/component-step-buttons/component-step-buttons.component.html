@@ -1,11 +1,26 @@
 <section class="section pt-2">
   <div class="container is-max-desktop">
     <div class="is-flex is-justify-content-space-between">
-      <button [ngClass]="['button', 'is-light', buttonColorClass]" (click)="setStep(-1)" [disabled]="step === 1">
+      <button
+        [ngClass]="['button', 'is-light', buttonColorClass]"
+        (click)="setStep(-1)"
+        [disabled]="step === 1"
+      >
         Terug
       </button>
-      <button [ngClass]="['button', 'is-medium', buttonColorClass]" (click)="setStep(1)" [disabled]="isLastStep">
+      <button
+        [ngClass]="['button', 'is-medium', buttonColorClass]"
+        (click)="setStep(1)"
+        *ngIf="!isLastStep"
+      >
         Volgende
+      </button>
+      <button
+        (click)="onLastStep()"
+        class="button is-medium is-success"
+        *ngIf="isLastStep"
+      >
+        {{ toNextComponentButtonText }}
       </button>
     </div>
   </div>
