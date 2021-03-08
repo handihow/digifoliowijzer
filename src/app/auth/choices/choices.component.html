@@ -1,1 +1,53 @@
-<p>choices works!</p>
+<section class="section pb-2">
+  <div class="container is-max-widescreen">
+    <div class="columns">
+      <div class="column is-3">
+        <aside class="menu">
+          <ul class="menu-list">
+            <li *ngFor="let item of choiceItems">
+              <a
+                (click)="setStep(item.step)"
+                [ngClass]="step === item.step ? 'is-active' : ''"
+                >{{ item.menuTitle }}</a
+              >
+            </li>
+          </ul>
+        </aside>
+        <div class="image-container">
+          <figure class="image is-square mt-4 is-hidden-mobile">
+            <img [src]="getImage()" />
+          </figure>
+        </div>
+      </div>
+
+      <div class="column">
+        <h4 class="title is-4">{{ getTitle() }}</h4>
+        <div class="content" [innerHTML]="getHTML()"></div>
+      </div>
+      <div class="column is-3">
+        <a *ngFor="let link of getLinks()" [href]="link.href" target="_blank">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-5by2">
+                <img [src]="link.image" [alt]="link.alt" />
+              </figure>
+            </div>
+            <header class="card-header">
+              <p class="card-header-title">
+                {{ link.title }}
+              </p>
+            </header>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<app-component-step-buttons
+  *ngIf="step === 3"
+  buttonColorClass="is-link"
+  [isBackButtonHidden]="true"
+  [isLastStep]="true"
+  toNextComponentButtonText="Naar set van eisen"
+  nextComponentRouterLink="/auth/requirements"
+></app-component-step-buttons>

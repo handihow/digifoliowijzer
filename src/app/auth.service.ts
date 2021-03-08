@@ -117,6 +117,7 @@ export class AuthService {
       componentStep: 1,
       createdAt: firebase.firestore.Timestamp.now(),
       updatedAt: firebase.firestore.Timestamp.now(),
+      hasAdvancedUI: false,
       portfolioRequirements: {
         development: {
           fourToSix: MoSCoWRequirement.WONT,
@@ -141,36 +142,36 @@ export class AuthService {
       },
       childContribution: {
         development: {
-          fourToSix: MoSCoWRequirement.WONT,
-          sevenToNine: MoSCoWRequirement.COULD,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: false,
+          sevenToNine: false,
+          tenToTwelve: false
         },
         evaluation: {
-          fourToSix: MoSCoWRequirement.COULD,
-          sevenToNine: MoSCoWRequirement.MUST,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: false,
+          sevenToNine: false,
+          tenToTwelve: false
         },
         presentation: {
-          fourToSix: MoSCoWRequirement.MUST,
-          sevenToNine: MoSCoWRequirement.MUST,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: false,
+          sevenToNine: false,
+          tenToTwelve: false
         },
       },
       parentContribution: {
         development: {
-          fourToSix: MoSCoWRequirement.WONT,
-          sevenToNine: MoSCoWRequirement.COULD,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: false,
+          sevenToNine: false,
+          tenToTwelve: false
         },
         evaluation: {
-          fourToSix: MoSCoWRequirement.COULD,
-          sevenToNine: MoSCoWRequirement.MUST,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: false,
+          sevenToNine: false,
+          tenToTwelve: false
         },
         presentation: {
-          fourToSix: MoSCoWRequirement.MUST,
-          sevenToNine: MoSCoWRequirement.MUST,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: false,
+          sevenToNine: false,
+          tenToTwelve: false
         },
       },
       additionalRequirements: {
@@ -179,7 +180,7 @@ export class AuthService {
         isLinkedToStudentTrackingSystem: MoSCoWRequirement.COULD,
         canBeAddedStudentProgramsAndGoals: MoSCoWRequirement.WONT,
         studentCanCreatePlanning: MoSCoWRequirement.COULD,
-        teacherCanSelectGoals: MoSCoWRequirement.SHOULD,
+        teacherCanSelectGoals: MoSCoWRequirement.COULD,
         hasChatFunctionality: MoSCoWRequirement.MUST,
         hasGroupOverviewFunctionality: MoSCoWRequirement.WONT,
         reportsOfConversationsWithStudentsArePartOfPortfolio: MoSCoWRequirement.COULD,
@@ -212,6 +213,13 @@ export class AuthService {
   updateUserStateComponentStep(userId: string, step: number) {
     this.db.collection('users').doc(userId).update({
       componentStep: step,
+      updatedAt: firebase.firestore.Timestamp.now(),
+    });
+  }
+
+  updateUIMode(userId: string, hasAdvancedUI: boolean){
+    this.db.collection('users').doc(userId).update({
+      hasAdvancedUI: hasAdvancedUI,
       updatedAt: firebase.firestore.Timestamp.now(),
     });
   }

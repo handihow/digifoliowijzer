@@ -1,1 +1,47 @@
-<p>overview works!</p>
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns">
+      <div class="column is-3">
+        <aside class="menu">
+          <ul class="menu-list">
+            <li *ngFor="let item of overviewItems; let i = index">
+              <a
+                (click)="setStep(i + 1)"
+                [ngClass]="step === i + 1 ? 'is-active' : ''"
+                >{{ item }}</a
+              >
+            </li>
+          </ul>
+        </aside>
+      </div>
+      <div class="column" *ngIf="step === 3">
+        <div
+          *ngFor="
+            let additionalRequirement of additionalRequirementItems;
+            let i = index
+          "
+        >
+          <div
+            class="table-container mb-3"
+            *ngIf="
+              additionalRequirements[i] && additionalRequirements[i].length
+            "
+          >
+            <table class="table is-small is-bordered is-fullwidth is-striped">
+              <thead [ngClass]="[additionalRequirement.cssClass]">
+                <tr>
+                  <th class="has-text-white">{{ additionalRequirement.tableHeader }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of additionalRequirements[i]">
+                  <td>{{ row.title }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

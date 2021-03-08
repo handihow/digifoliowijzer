@@ -1,13 +1,14 @@
 <section class="section pt-2">
-  <div class="container is-max-desktop">
+  <div class="container is-max-widescreen">
     <div class="is-flex is-justify-content-space-between">
       <button
-        [ngClass]="['button', 'is-light', buttonColorClass]"
+        [ngClass]="['button', 'is-light', buttonColorClass, isBackButtonHidden ? 'is-hidden' : '']"
         (click)="setStep(-1)"
         [disabled]="step === 1"
       >
         Terug
       </button>
+      <div [ngClass]="[isBackButtonHidden ? '' : 'is-hidden']"></div>
       <button
         [ngClass]="['button', 'is-medium', buttonColorClass]"
         (click)="setStep(1)"

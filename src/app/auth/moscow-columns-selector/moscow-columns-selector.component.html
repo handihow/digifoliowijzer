@@ -6,6 +6,7 @@
     <app-moscow-buttons
       [initialValue]="getRequirementValue(column, row.property)"
       [buttonsDisabled]="getButtonsAreDisabled(column, row.property)"
+      [hasAdvancedUI]="userState?.hasAdvancedUI || false"
       (changedValue)="updateValue($event, column, row.property)"
     ></app-moscow-buttons>
   </div>

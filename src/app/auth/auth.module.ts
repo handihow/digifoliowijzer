@@ -24,6 +24,7 @@ import { ComponentStepButtonsComponent } from './component-step-buttons/componen
 import { QuestionsPageThreeComponent } from './requirements/questions-page-three/questions-page-three.component';
 import { QuestionsPageFourComponent } from './requirements/questions-page-four/questions-page-four.component';
 import { QuestionsPageFiveComponent } from './requirements/questions-page-five/questions-page-five.component';
+import { BooleanColumnsSelectorComponent } from './boolean-columns-selector/boolean-columns-selector.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { QuestionsPageFiveComponent } from './requirements/questions-page-five/q
 	  QuestionsPageThreeComponent,
 	  QuestionsPageFourComponent,
 	  QuestionsPageFiveComponent,
+	  BooleanColumnsSelectorComponent,
   ],
   imports: [
     CommonModule,

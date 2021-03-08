@@ -19,14 +19,14 @@ export class AuthenticatedComponent implements OnInit {
   controls: any = {
     '/auth/information': {
       step: 1,
-      title: 'Informatie vooraf',
+      title: 'Achtergrond',
       color: 'is-warning',
       previousPage: null,
       nextPage: '/auth/choices',
     },
     '/auth/choices': {
       step: 2,
-      title: 'Keuzes maken',
+      title: 'Onderzoeken en verdiepen',
       color: 'is-link',
       previousPage: 'auth/information',
       nextPage: '/auth/requirements',

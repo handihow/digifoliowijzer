@@ -8,10 +8,13 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent {
 
+  isLoggingIn: boolean= false;
+
   constructor(private authService: AuthService) {
   }
 
   login(){
+    this.isLoggingIn = true;
     this.authService.login();
   }
 

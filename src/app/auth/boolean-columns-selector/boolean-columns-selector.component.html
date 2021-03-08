@@ -1,0 +1,43 @@
+<div class="columns is-mobile" *ngFor="let row of rows">
+  <div class="column">
+    <h5 class="title is-6">{{ row.title }}</h5>
+  </div>
+  <div class="column" *ngFor="let column of columns">
+    <div class="buttons has-addons">
+      <button
+        [ngClass]="[
+          'button has-tooltip-arrow has-tooltip-left',
+          getRequirementValue(column, row.property)
+            ? 'is-selected is-success'
+            : ''
+        ]"
+        [disabled]="getButtonsAreDisabled(column, row.property)"
+        (click)="updateValue(true, column, row.property)"
+        [attr.data-tooltip]="
+            getButtonsAreDisabled(column, row.property)
+            ? 'won\'t gekozen bij portfolio type'
+            : 'wel bijdragen'
+        "
+      >
+        <fa-icon [icon]="check"></fa-icon>
+      </button>
+      <button
+        [ngClass]="[
+          'button has-tooltip-arrow has-tooltip-right',
+          getRequirementValue(column, row.property)
+            ? ''
+            : 'is-selected is-warning'
+        ]"
+        [disabled]="getButtonsAreDisabled(column, row.property)"
+        (click)="updateValue(false, column, row.property)"
+        [attr.data-tooltip]="
+            getButtonsAreDisabled(column, row.property)
+            ? 'won\'t gekozen bij portfolio type'
+            : 'niet bijdragen'
+        "
+      >
+        <fa-icon [icon]="minus"></fa-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -5,8 +5,8 @@
         <span class="has-text-white">digifolio</span
         ><span class="has-text-dark">wijzer</span>
       </h1>
-      <h5 class="subtitle is-5">de weg naar het juiste portfolio</h5>
-      <button class="button is-white is-medium" (click)="login()">
+      <h5 class="subtitle is-5">stel de goede vragen</h5>
+      <button class="button is-white is-large" (click)="login()">
         Nu beginnen
       </button>
       <div id="backpack-image" class="is-hidden-mobile">
@@ -19,3 +19,5 @@
     </div>
   </div>
 </section>
+
+<div [ngClass]="['pageloader is-warning', isLoggingIn ? 'is-active' : '']"><span class="title">Even geduld aub...</span></div>

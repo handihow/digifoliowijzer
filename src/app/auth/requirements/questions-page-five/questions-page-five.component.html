@@ -1,11 +1,11 @@
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-widescreen">
     <div class="columns">
       <div class="column is-9">
         <h6 class="title is-6">Aanvullende eisen</h6>
       </div>
       <div class="column">
-        <h6 class="title is-6">Classificatie</h6>
+        <h6 class="title is-6">{{userState?.hasAdvancedUI ? 'Classificatie' : 'Keuze'}}</h6>
       </div>
     </div>
     <div class="columns" *ngFor="let row of rows">
@@ -15,6 +15,7 @@
       <div class="column">
         <app-moscow-buttons
           [initialValue]="getValue(row.property)"
+          [hasAdvancedUI]="userState?.hasAdvancedUI || false"
           (changedValue)="setValue($event, row.property)"
         ></app-moscow-buttons>
       </div>

@@ -1,62 +1,88 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, OnChanges, Output } from '@angular/core';
 import { MoSCoWRequirement } from '../user.state.model';
+import {
+  faQuestion,
+  faCheck,
+  faMinus,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface Requirement {
   value: MoSCoWRequirement;
   buttonText: string;
+  icon: IconDefinition;
   cssClass: string;
   tooltip: string;
+  tooltipAdvanced: string;
 }
 
 @Component({
   selector: 'app-moscow-buttons',
   templateUrl: './moscow-buttons.component.html',
-  styleUrls: ['./moscow-buttons.component.css']
+  styleUrls: ['./moscow-buttons.component.css'],
 })
-export class MoscowButtonsComponent implements OnInit {
-
+export class MoscowButtonsComponent implements OnInit, OnChanges {
   value: number = MoSCoWRequirement.WONT;
-  requirements: Requirement[] = [
-    {
-      value: MoSCoWRequirement.MUST,
-      buttonText: 'M',
-      cssClass: 'is-success',
-      tooltip: 'must haves'
-    },
-    {
-      value: MoSCoWRequirement.SHOULD,
-      buttonText: 'S',
-      cssClass: 'is-link',
-      tooltip: 'should haves'
-    },
-    {
-      value: MoSCoWRequirement.COULD,
-      buttonText: 'C',
-      cssClass: 'is-info',
-      tooltip: 'chould haves'
-    },
-    {
-      value: MoSCoWRequirement.WONT,
-      buttonText: 'W',
-      cssClass: 'is-warning',
-      tooltip: 'won\'t haves'
-    }
-  ]
+  must: Requirement = {
+    value: MoSCoWRequirement.MUST,
+    buttonText: 'M',
+    icon: faCheck,
+    cssClass: 'is-success',
+    tooltip: 'must haves',
+    tooltipAdvanced: 'must haves',
+  }
+  should: Requirement = {
+    value: MoSCoWRequirement.SHOULD,
+    buttonText: 'S',
+    icon: faQuestion,
+    cssClass: 'is-link',
+    tooltip: 'should haves',
+    tooltipAdvanced: 'should haves',
+  };
+  could: Requirement = {
+    value: MoSCoWRequirement.COULD,
+    buttonText: 'C',
+    icon: faQuestion,
+    cssClass: 'is-info',
+    tooltip: 'should/could haves',
+    tooltipAdvanced: 'chould haves',
+  };
+  wont: Requirement = {
+    value: MoSCoWRequirement.WONT,
+    buttonText: 'W',
+    icon: faMinus,
+    cssClass: 'is-warning',
+    tooltip: "won't haves",
+    tooltipAdvanced: "won't haves",
+  };
+  requirements: Requirement[] = [];
+  @Input() hasAdvancedUI: boolean = false;
   @Input() buttonsDisabled: boolean = false;
   @Input() initialValue: MoSCoWRequirement | undefined;
   @Output() changedValue: EventEmitter<MoSCoWRequirement> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    if(this.initialValue !== undefined){
-      this.value = this.initialValue;
+
+  }
+
+  ngOnChanges(): void {
+    if (this.hasAdvancedUI) {
+      this.requirements = [this.must,this.should,this.could,this.wont];
+    } else {
+      this.requirements = [this.must,this.could,this.wont];
+    }
+    if (this.initialValue !== undefined) {
+      this.value =
+        !this.hasAdvancedUI && this.initialValue === MoSCoWRequirement.SHOULD
+          ? MoSCoWRequirement.COULD
+          : this.initialValue;
     }
   }
 
-  setValue(index: MoSCoWRequirement){
+  setValue(index: MoSCoWRequirement) {
     this.value = index;
-    this.changedValue.emit(index)
+    this.changedValue.emit(index);
   }
-
 }

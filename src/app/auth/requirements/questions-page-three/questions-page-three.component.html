@@ -1,15 +1,15 @@
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container is-max-widescreen">
     <app-moscow-title-columns
       [titles]="titles"
       (toggleModal)="openModal($event)"
       ></app-moscow-title-columns>
-    <app-moscow-columns-selector
+    <app-boolean-columns-selector
       [rows]="rows"
       [columns]="columns"
       [property]="property"
       [userState]="userState"
-    ></app-moscow-columns-selector>
+    ></app-boolean-columns-selector>
   </div>
 </section>
 <app-component-step-buttons buttonColorClass="is-primary"></app-component-step-buttons>

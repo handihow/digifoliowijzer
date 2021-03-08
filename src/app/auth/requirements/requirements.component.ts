@@ -43,4 +43,10 @@ export class RequirementsComponent implements OnInit, OnDestroy {
     this.showMoscowInfoModal = !this.showMoscowInfoModal;
   }
 
+  toggleAdvancedUI(hasAdvancedUI: boolean){
+    if(this.userState){
+      this.authService.updateUIMode(this.userState.id, hasAdvancedUI);
+    }
+  }
+
 }

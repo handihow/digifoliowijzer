@@ -1,1 +1,38 @@
-<p>information works!</p>
+<section class="section pb-2">
+  <div class="container is-max-widescreen">
+    <div class="columns">
+      <div class="column is-3">
+        <aside class="menu">
+          <ul class="menu-list">
+            <li *ngFor="let item of informationItems">
+              <a
+                (click)="setStep(item.step)"
+                [ngClass]="step === item.step ? 'is-active' : ''"
+                >{{ item.title }}</a
+              >
+            </li>
+          </ul>
+        </aside>
+        <div class="image-container">
+          <figure class="image is-square mt-4 is-hidden-mobile">
+            <img [src]="getImage()" />
+          </figure>
+        </div>
+      </div>
+      <div class="column content">
+        <blockquote *ngIf="getHighlightedText().length > 0" class="is-italic">
+          "{{ getHighlightedText() }}"
+        </blockquote>
+        <div [innerHTML]="getHTML()"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-component-step-buttons
+  *ngIf="step === 4"
+  buttonColorClass="is-warning"
+  [isBackButtonHidden]="true"
+  [isLastStep]="true"
+  toNextComponentButtonText="Volgende stap"
+  nextComponentRouterLink="/auth/choices"
+></app-component-step-buttons>

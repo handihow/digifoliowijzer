@@ -14,6 +14,7 @@ export class ComponentStepButtonsComponent implements OnInit, OnDestroy {
   stateSub: Subscription | undefined;
   step: number = 1;
   @Input() buttonColorClass: string = '';
+  @Input() isBackButtonHidden: boolean = false;
   @Input() isLastStep: boolean = false;
   @Input() nextComponentRouterLink: string = '';
   @Input() toNextComponentButtonText: string = '';

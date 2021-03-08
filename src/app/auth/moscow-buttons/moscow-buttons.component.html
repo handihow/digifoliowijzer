@@ -1,15 +1,22 @@
 <div class="buttons has-addons">
   <button
     *ngFor="let requirement of requirements"
-    class="button has-tooltip-arrow"
     [ngClass]="[
+      'button has-tooltip-arrow',
       value === requirement.value ? 'is-selected ' + requirement.cssClass : '',
-      requirement.value < 2 ? 'has-tooltip-left' : 'has-tooltip-right'
+      requirement.value < 3 ? 'has-tooltip-left' : 'has-tooltip-right'
     ]"
     (click)="setValue(requirement.value)"
-    [attr.data-tooltip]="buttonsDisabled ? 'W gekozen bij portfolio type' : requirement.tooltip"
+    [attr.data-tooltip]="
+      buttonsDisabled
+        ? 'won\'t gekozen bij portfolio type'
+        : hasAdvancedUI
+        ? requirement.tooltipAdvanced
+        : requirement.tooltip
+    "
     [disabled]="buttonsDisabled"
   >
-    {{requirement.buttonText}}
+    <span *ngIf="hasAdvancedUI">{{ requirement.buttonText }}</span>
+    <fa-icon *ngIf="!hasAdvancedUI" [icon]="requirement.icon"></fa-icon>
   </button>
 </div>

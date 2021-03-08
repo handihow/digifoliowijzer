@@ -19,6 +19,7 @@ export interface UserState {
   componentStep: number;
 	createdAt: firebase.firestore.Timestamp;
 	updatedAt: firebase.firestore.Timestamp;
+  hasAdvancedUI: boolean;
 	portfolioRequirements: {
 		development: {
 			fourToSix: MoSCoWRequirement,
@@ -43,36 +44,36 @@ export interface UserState {
   };
   childContribution: {
 		development: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: boolean,
+			sevenToNine: boolean,
+			tenToTwelve: boolean
 		},
 		evaluation: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: boolean,
+			sevenToNine: boolean,
+			tenToTwelve: boolean
 		},
 		presentation: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: boolean,
+			sevenToNine: boolean,
+			tenToTwelve: boolean
 		},
 	};
   parentContribution: {
 		development: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: boolean,
+			sevenToNine: boolean,
+			tenToTwelve: boolean
 		},
 		evaluation: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: boolean,
+			sevenToNine: boolean,
+			tenToTwelve: boolean
 		},
 		presentation: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: boolean,
+			sevenToNine: boolean,
+			tenToTwelve: boolean
 		},
 	};
   additionalRequirements: {
