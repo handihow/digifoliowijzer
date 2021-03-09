@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
 import { UserState, MoSCoWRequirement, PortfolioType } from './auth/user.state.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import Row from './auth/moscow.row.model';
 
 @Injectable({
@@ -12,63 +12,7 @@ import Row from './auth/moscow.row.model';
 })
 export class AuthService {
 
-  private _rows: Row[] = [
-    {
-      title: '4-6 jaar',
-      property: 'fourToSix',
-    },
-    {
-      title: '7-9 jaar',
-      property: 'sevenToNine',
-    },
-    {
-      title: '10-12 jaar',
-      property: 'tenToTwelve',
-    },
-  ];
-
-  private _additionalRequirementRows: Row[] = [
-    {
-      title: "Wil je dat ouders en kinderen ook thuis kunnen inloggen op het digitale portfolio?",
-      property: "canLoginAtHome"
-    },
-    {
-      title: "Wil je dat het digitale portfolio af te drukken is?",
-      property: "canBePrinted"
-    },
-    {
-      title: "Wil je dat het digitale portfolio een automatische koppeling heeft met verwerkingssoftware en/of LOVS?",
-      property: "isLinkedToStudentTrackingSystem"
-    },
-    {
-      title: "Wil je zelf leerlijnen en leerdoelen kunnen toevoegen aan het digitale portfolio?",
-      property: "canBeAddedStudentProgramsAndGoals"
-    },
-    {
-      title: "Wil je dat leerlingen zelf kunnen kiezen en plannen aan welke doelen ze werken?",
-      property: "studentCanCreatePlanning"
-    },
-    {
-      title: "Wil je als leerkracht doelen kunnen selecteren voor kinderen in het digitale portfolio waar een kind een bepaalde periode aan moet werken?",
-      property: "teacherCanSelectGoals"
-    },
-    {
-      title: "Wil je als leerkracht via het digitale portfolio kunnen chatten met kinderen?",
-      property: "hasChatFunctionality"
-    },
-    {
-      title: "Wil je in de omgeving van het digitale portfolio een groepsoverzicht hebben van alle kinderen?",
-      property: "hasGroupOverviewFunctionality"
-    },
-    {
-      title: "Wil je dat verslagjes van kindgesprekken onderdeel worden van je digitale portfolio?",
-      property: "reportsOfConversationsWithStudentsArePartOfPortfolio"
-    },
-    {
-      title: "Wil je dat het digitale portfolio ook fungeert als een communicatiemiddel met ouders voor bijv. het versturen van planningen of nieuwsbrieven?",
-      property: "isCommunicationPlatformWithParents"
-    }
-  ];
+  private _unsubscribe: Subscription | undefined;
 
   constructor(
     public auth: AngularFireAuth,
@@ -80,26 +24,37 @@ export class AuthService {
     return this.auth.authState;
   }
 
-  setUser(user: firebase.User){
-    this.db
+  async setUser(user: firebase.User){
+    const currentUser = await this.db
       .collection('users')
       .doc(user.uid)
-      .valueChanges()
-      .subscribe((data) => {
-        if (data) {
-          const userState = data as UserState;
-          this._userState.next(userState);
-          this.router.navigateByUrl(userState.currentPage);
-        } else {
-          this.db.collection('users').doc(user.uid).set(this._createDefaultUserState(user.uid));
-          this.router.navigateByUrl('/auth');
-        }
-      });
+      .get().toPromise();
+    if (!currentUser.exists) {
+      await this.db.collection('users').doc(user.uid).set(this._createDefaultUserState(user.uid));
+    }
+    this.startObserveUser(user.uid);
+  }
+
+  private startObserveUser(userId: string){
+    this._unsubscribe = this.db.collection('users').doc(userId).valueChanges().subscribe(state=> {
+      if (state) {
+        const userState = state as UserState;
+        this._userState.next(userState);
+        this.router.navigateByUrl(userState.currentPage);
+      }
+    })
   }
 
   unsetUser(){
+    this.stopObserveUser();
     this._userState.next(this._createDefaultUserState(''));
     this.router.navigateByUrl('/login');
+  }
+
+  private stopObserveUser(){
+    if(this._unsubscribe){
+      this._unsubscribe.unsubscribe();
+    }
   }
 
   login() {
@@ -229,14 +184,6 @@ export class AuthService {
       isFinished: true,
       updatedAt: firebase.firestore.Timestamp.now()
     });
-  }
-
-  getRows(){
-    return [... this._rows];
-  }
-
-  getAdditionalRequirementRows(){
-    return [... this._additionalRequirementRows];
   }
 
 }

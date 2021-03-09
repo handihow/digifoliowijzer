@@ -104,7 +104,7 @@ export class ChoicesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.stateSub = this.authService.userState.subscribe(state => {
-      if(state.id.length === 0) return;
+      if(!state || state.id.length === 0) return;
       this.userState = state;
       this.step = this.userState.componentStep || 1;
     });
@@ -117,18 +117,22 @@ export class ChoicesComponent implements OnInit, OnDestroy {
   }
 
   getImage(){
+    if(!this.choiceItems[this.step -1]) return;
     return this.choiceItems[this.step - 1].image;
   }
 
   getHTML(){
+    if(!this.choiceItems[this.step -1]) return;
     return this.choiceItems[this.step - 1].html;
   }
 
   getTitle(){
+    if(!this.choiceItems[this.step -1]) return;
     return this.choiceItems[this.step - 1].title;
   }
 
   getLinks(){
+    if(!this.choiceItems[this.step -1]) return;
     return this.choiceItems[this.step - 1].links;
   }
 

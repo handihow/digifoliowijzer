@@ -3,6 +3,7 @@ import { AuthService } from '../../../auth.service';
 import Row from '../../moscow.row.model';
 import { MoSCoWRequirement, UserState } from '../../user.state.model';
 import { get, set } from 'lodash';
+import Settings from '../../settings';
 
 @Component({
   selector: 'app-questions-page-five',
@@ -28,11 +29,11 @@ export class QuestionsPageFiveComponent implements OnInit {
 
   setRows(){
     if(this.step === 6){
-      this.rows = this.authService.getAdditionalRequirementRows().slice(0,3);
+      this.rows = Settings.additionalRequirementRows.slice(0,3);
     } else if(this.step===7){
-      this.rows = this.authService.getAdditionalRequirementRows().slice(3,6);
+      this.rows = Settings.additionalRequirementRows.slice(3,6);
     } else {
-      this.rows = this.authService.getAdditionalRequirementRows().slice(7);
+      this.rows = Settings.additionalRequirementRows.slice(7);
     }
   }
 

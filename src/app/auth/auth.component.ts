@@ -1,21 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
-import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Component, Input } from '@angular/core';
 import { UserState } from './user.state.model';
-import firebase from 'firebase/app';
 
 @Component({
   selector: 'app-authenticated',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
 })
-export class AuthenticatedComponent implements OnInit {
-  userState: UserState | undefined;
-  routerSub: Subscription | undefined;
-  stateSub: Subscription | undefined;
-  currentUrl: string = '/auth/information';
+export class AuthenticatedComponent  {
+  @Input() userState: UserState | undefined;
+  @Input() currentUrl: string = '/auth/information';
   controls: any = {
     '/auth/information': {
       step: 1,
@@ -48,39 +41,6 @@ export class AuthenticatedComponent implements OnInit {
     },
   };
 
-  constructor(private router: Router, private authService: AuthService) {}
-
-  ngOnInit(): void {
-
-    this.stateSub = this.authService.userState.subscribe(state => {
-      if(state.id.length === 0) return;
-      this.userState = state;
-      this.currentUrl = state.currentPage;
-      this.router.navigateByUrl(this.currentUrl);
-    })
-
-    this.routerSub = this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe((_event) => {
-        if (this.userState) {
-          this.authService.updateUserState({
-            ...this.userState,
-            updatedAt: firebase.firestore.Timestamp.now(),
-            currentPage: this.router.url,
-            componentStep: this.router.url === this.userState.currentPage ? (this.userState.componentStep || 1) : 1
-          });
-        }
-      });
-  }
-
-  ngOnDestroy() {
-    if (this.routerSub) {
-      this.routerSub.unsubscribe();
-    }
-    if(this.stateSub){
-      this.stateSub.unsubscribe();
-    }
-  }
-
+  constructor() {}
 
 }

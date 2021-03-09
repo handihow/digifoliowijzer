@@ -141,14 +141,17 @@ export class InformationComponent implements OnInit, OnDestroy {
   }
 
   getImage(){
+    if(!this.informationItems[this.step -1]) return;
     return this.informationItems[this.step - 1].image;
   }
 
   getHTML(){
+    if(!this.informationItems[this.step -1]) return '';
     return this.informationItems[this.step - 1].html;
   }
 
   getHighlightedText(){
+    if(!this.informationItems[this.step -1]) return '';
     return this.informationItems[this.step - 1].highlightedText;
   }
 

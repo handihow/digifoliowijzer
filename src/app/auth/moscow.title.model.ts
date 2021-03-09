@@ -1,5 +1,6 @@
 export default interface MoscowColumnTitle {
   title: string;
+  property: string;
   hasSubtitle: boolean;
   hasInfoBtn: boolean;
   subtitle?: string;

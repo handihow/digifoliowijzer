@@ -4,6 +4,7 @@ import Row from '../../moscow.row.model';
 import { PortfolioType, UserState } from '../../user.state.model';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { get, set } from 'lodash';
+import Settings from '../../settings';
 
 @Component({
   selector: 'app-questions-page-two',
@@ -21,7 +22,7 @@ export class QuestionsPageTwoComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.rows = this.authService.getRows()
+    this.rows = Settings.ageRows;
   }
 
   getValue(age: string){
