@@ -198,11 +198,12 @@ export class PortfolioTypeChartComponent implements OnInit {
     },
     {
       // physical = primary color
-      backgroundColor: 'rgb(244,244,244)',
+      // backgroundColor: 'rgb(244,244,244)',
+      backgroundColor: 'rgba(72,199,142, 0.4)',
     },
     {
       // digital = primary color
-      backgroundColor: 'rgba(0,209,177, 0.7)',
+      backgroundColor: 'rgba(72,199,142, 0.8)',
     },
   ];
   barChartType: ChartType = 'bar';

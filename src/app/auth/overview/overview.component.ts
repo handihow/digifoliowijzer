@@ -15,7 +15,7 @@ export class OverviewComponent implements OnInit {
   userState: UserState | undefined;
   stateSub: Subscription | undefined;
   showMoscowInfoModal: boolean = false;
-  overviewItems: string[] = ['Type portfolio','Bijdrage kind en ouders','Aanvullende eisen']
+  overviewItems: string[] = ['Type portfolio','Bijdrage kind en ouders','Aanvullende eisen', 'Rapport maken', 'Tot slot']
 
   constructor(private authService: AuthService) {}
 
@@ -32,4 +32,11 @@ export class OverviewComponent implements OnInit {
       this.authService.updateUserStateComponentStep(this.userState.id, step);
     }
   }
+
+  onFinish(){
+    if(this.userState){
+      this.authService.setUserStateToFinished(this.userState.id);
+    }
+  }
+
 }

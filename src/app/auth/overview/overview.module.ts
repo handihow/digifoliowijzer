@@ -8,9 +8,11 @@ import { OverviewComponent } from './overview.component';
 import { AdditionalRequirementsComponent } from './additional-requirements/additional-requirements.component';
 import { PortfolioTypeChartComponent } from './portfolio-type-chart/portfolio-type-chart.component';
 import { ChildParentContributionComponent } from './child-parent-contribution/child-parent-contribution.component';
+import { FinalTextComponent } from './final-text/final-text.component';
+import { CreateReportComponent } from './create-report/create-report.component';
 
 @NgModule({
-  declarations: [OverviewComponent, AdditionalRequirementsComponent, PortfolioTypeChartComponent, ChildParentContributionComponent],
+  declarations: [OverviewComponent, AdditionalRequirementsComponent, PortfolioTypeChartComponent, ChildParentContributionComponent, FinalTextComponent, CreateReportComponent],
   imports: [CommonModule, OverviewRoutingModule, ChartsModule, FontAwesomeModule],
 })
 export class OverviewModule {}
