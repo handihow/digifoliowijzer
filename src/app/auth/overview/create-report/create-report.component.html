@@ -1,19 +1,22 @@
+<div class="content">
+  <p>Je kunt jouw rapport downloaden als PDF en Excel file.</p>
+  <p>
+    Druk op 1 van de twee knoppen. Na een korte tijd zal de file automatisch
+    downloaden en kun je deze terugvinden in jouw downloads folder.
+  </p>
+</div>
 <div class="buttons">
-  <button class="button is-danger">
+  <button class="button is-danger" (click)="onGeneratePdf()">
     <span class="icon">
       <fa-icon [icon]="faFilePdf"></fa-icon>
     </span>
-    <span>
-      Download als PDF
-    </span>
+    <span> Download als PDF </span>
   </button>
 
-  <button class="button is-success">
+  <button class="button is-success" (click)="onGenerateExcel()">
     <span class="icon">
       <fa-icon [icon]="faFileExcel"></fa-icon>
     </span>
-    <span>
-      Download als Excel
-    </span>
+    <span> Download als Excel </span>
   </button>
 </div>

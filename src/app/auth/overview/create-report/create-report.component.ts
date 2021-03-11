@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { faFileExcel, faFilePdf } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -10,9 +10,20 @@ export class CreateReportComponent implements OnInit {
   faFileExcel = faFileExcel;
   faFilePdf = faFilePdf;
 
+  @Output() generatePdf: EventEmitter<boolean> = new EventEmitter();
+  @Output() generateExcel: EventEmitter<boolean> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onGeneratePdf(){
+    this.generatePdf.emit(true);
+  }
+
+  onGenerateExcel(){
+    this.generateExcel.emit(true);
   }
 
 }

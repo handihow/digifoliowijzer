@@ -1,3 +1,4 @@
+<app-pdf-title title="Type portfolio" *ngIf="pdfPreview"></app-pdf-title>
 <div *ngIf="doneInitializing" class="chart">
 <canvas baseChart width="600" height="400"
                 [datasets]="chartData"

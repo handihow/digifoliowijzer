@@ -18,6 +18,7 @@ interface RequirementItem {
 export class AdditionalRequirementsComponent implements OnInit {
 
   @Input() userState: UserState | undefined;
+  @Input() pdfPreview: boolean = false;
   additionalRequirements: Row[][] = [];
   must: RequirementItem = {
     requirement: [MoSCoWRequirement.MUST],

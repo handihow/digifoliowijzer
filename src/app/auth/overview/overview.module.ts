@@ -10,9 +10,10 @@ import { PortfolioTypeChartComponent } from './portfolio-type-chart/portfolio-ty
 import { ChildParentContributionComponent } from './child-parent-contribution/child-parent-contribution.component';
 import { FinalTextComponent } from './final-text/final-text.component';
 import { CreateReportComponent } from './create-report/create-report.component';
+import { PdfTitleComponent } from './pdf-title/pdf-title.component';
 
 @NgModule({
-  declarations: [OverviewComponent, AdditionalRequirementsComponent, PortfolioTypeChartComponent, ChildParentContributionComponent, FinalTextComponent, CreateReportComponent],
+  declarations: [OverviewComponent, AdditionalRequirementsComponent, PortfolioTypeChartComponent, ChildParentContributionComponent, FinalTextComponent, CreateReportComponent, PdfTitleComponent],
   imports: [CommonModule, OverviewRoutingModule, ChartsModule, FontAwesomeModule],
 })
 export class OverviewModule {}

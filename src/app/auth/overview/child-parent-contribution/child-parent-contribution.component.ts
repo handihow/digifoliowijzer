@@ -19,6 +19,7 @@ export class ChildParentContributionComponent implements OnInit {
   faMale = faMale;
   faFemale = faFemale;
   faChalkboardTeacher = faChalkboardTeacher;
+  @Input() pdfPreview: boolean = false;
 
   @Input() userState: UserState | undefined;
 

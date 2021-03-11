@@ -96,4 +96,31 @@ export default class Settings {
       property: "isCommunicationPlatformWithParents"
     }
   ];
+
+  public static html2canvasOpt = {
+      width: 1000,
+      height: 1410
+  };
+
+  public static sheetColumns = [
+    {
+      header: 'Ontwikkeling',
+      key: 'development',
+      width: 30,
+      style: { font: { bold: true } },
+    },
+    {
+      header: 'Beoordeling',
+      key: 'evaluation',
+      width: 30,
+      style: { font: { bold: true } },
+    },
+    {
+      header: 'Presentatie',
+      key: 'presentation',
+      width: 30,
+      style: { font: { bold: true } },
+    },
+  ];
+
 }

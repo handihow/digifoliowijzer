@@ -1,3 +1,5 @@
+<app-pdf-title title="Bijdrage van ouders en kind" *ngIf="pdfPreview"></app-pdf-title>
+
 <div class="columns is-mobile">
   <div class="column">
     <h5 class="title is-6">Leeftijdscategorie</h5>
@@ -12,27 +14,30 @@
     <h5 class="title is-6">{{ row.title }}</h5>
   </div>
   <div class="column" *ngFor="let column of columns">
-    <span class="icon mr-3" data-tooltip="docent">
+    <span class="icon mr-3" data-tooltip="docent" *ngIf="!pdfPreview">
       <fa-icon [icon]="faChalkboardTeacher"></fa-icon>
     </span>
+    <span *ngIf="pdfPreview">Docent</span>
     <span
       class="icon mr-3"
       data-tooltip="kind"
       *ngIf="
-        hasContribution('childContribution', column.property, row.property)
+        hasContribution('childContribution', column.property, row.property) && !pdfPreview
       "
     >
       <fa-icon [icon]="faChild"></fa-icon>
     </span>
+    <span *ngIf="hasContribution('childContribution', column.property, row.property) && pdfPreview">, kind</span>
     <span
       class="icon mr-3"
       data-tooltip="ouders"
       *ngIf="
-        hasContribution('parentContribution', column.property, row.property)
+        hasContribution('parentContribution', column.property, row.property) && !pdfPreview
       "
     >
       <fa-icon [icon]="faFemale"></fa-icon>
       <fa-icon [icon]="faMale"></fa-icon>
     </span>
+    <span *ngIf="hasContribution('parentContribution', column.property, row.property) && pdfPreview">, ouders</span>
   </div>
 </div>

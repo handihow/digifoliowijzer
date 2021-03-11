@@ -1,0 +1,13 @@
+.pdf__page {
+  height: 1410px;
+  width: 1000px;
+  padding: 50px;
+  border: 1px solid black;
+  margin: auto;
+  position: relative;
+}
+
+.pdf__footer {
+  position: absolute;
+  top: 1330px;
+}

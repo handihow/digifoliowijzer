@@ -17,6 +17,7 @@ import { Color, Label } from 'ng2-charts';
 export class PortfolioTypeChartComponent implements OnInit {
   doneInitializing: boolean = false;
   @Input() userState: UserState | undefined;
+  @Input() pdfPreview: boolean = false;
   lineChartProps: ChartDataSets = {
     borderWidth: 5,
     yAxisID: 'y-axis-portfolioRequirements',
