@@ -24,16 +24,33 @@
           </li>
           <li>
             <strong>C - could haves</strong>: deze eisen zijn niet nodig of
-            gewenst, maar wel bruikbaar;
+            gewenst, maar wel <strong>bruikbaar</strong>;
           </li>
           <li>
             <strong>W - won't haves</strong> deze eisen zullen op dit moment in
-            dit product niet aan bod hoeven te komen.
+            dit product <strong>niet aan bod</strong> hoeven te komen.
           </li>
         </ul>
         <p>
-          Om de keuzestress te verminderen, hebben we de keuzes 'should haves'
-          en 'could haves' samengevoegd. Als je toch liever gebruik wilt maken
+          Om de juiste keuzes te kunnen maken, hebben we een vereenvoudigd model
+          ontworpen, waarbij de opties 'should haves'
+          en 'could haves' zijn samengevoegd.
+        </p>
+        <ul>
+          <li>
+            <span class="icon"><fa-icon [icon]="faCheck"></fa-icon></span>
+            = must haves
+          </li>
+          <li>
+            <span class="icon"><fa-icon [icon]="faPlus"></fa-icon></span>
+            = could/should haves
+          </li>
+          <li>
+            <span class="icon"><fa-icon [icon]="faMinus"></fa-icon></span>
+            = won't haves
+          </li>
+        </ul>
+        <p>Als je toch liever gebruik wilt maken
           van de volledige MoSCoW methode, kies dan voor de geavanceerde
           weergave. Je krijgt dan alle 4 keuzes.
         </p>

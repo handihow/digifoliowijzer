@@ -1,0 +1,23 @@
+<div class="level is-marginless">
+  <div class="level-left">
+    <div class="level-item">
+      <div [ngClass]="removeTitleClass ? '' : 'title is-6'">{{ title?.title }}</div>
+    </div>
+    <div class="level-item" *ngIf="!hideInfoButton">
+      <button
+        [ngClass]="[
+          'button is-small is-rounded is-light has-tooltip-arrow',
+          title?.color ? title?.color : '',
+          title?.tooltipColor ? title?.tooltipColor : ''
+        ]"
+        (click)="openModal()"
+        data-tooltip="Klik voor meer informatie"
+      >
+        <fa-icon [icon]="faInfo"></fa-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="subtitle is-6" *ngIf="title?.hasSubtitle && !hideSubtitles">
+  {{ title?.subtitle }}
+</div>

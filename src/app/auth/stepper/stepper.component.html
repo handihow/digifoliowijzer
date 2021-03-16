@@ -1,36 +1,12 @@
 <div class="pt-5 pb-3">
   <ul class="steps has-content-centered has-gaps is-horizontal">
-    <li class="steps-segment" [ngClass]="{ 'is-active': step === 1 }">
-      <span class="steps-marker is-warning">1</span>
-      <div class="steps-content">
-        <a class="is-size-6 has-text-dark" routerLink="/auth/information"
-          >Achtergrond</a
-        >
-      </div>
-    </li>
-    <li class="steps-segment" [ngClass]="{ 'is-active': step === 2 }">
-      <span class="steps-marker is-info">2</span>
-      <div class="steps-content">
-        <a class="is-size-6 has-text-dark" routerLink="/auth/choices"
-          >Onderzoeken en verdiepen</a
-        >
-      </div>
-    </li>
-    <li class="steps-segment" [ngClass]="{ 'is-active': step === 3 }">
-      <span class="steps-marker is-primary">3</span>
-      <div class="steps-content">
-        <a class="is-size-6 has-text-dark" routerLink="/auth/requirements"
-          >Set van eisen</a
-        >
-      </div>
-    </li>
-    <li class="steps-segment" [ngClass]="{ 'is-active': step === 4 }">
-      <span class="steps-marker is-success">4</span>
-      <div class="steps-content">
-        <a class="is-size-6 has-text-dark" routerLink="/auth/overview"
-          >Overzicht en rapport</a
-        >
-      </div>
+    <li class="steps-segment" [ngClass]="{ 'is-active': step === item.step }" *ngFor="let item of stepItems">
+      <a [routerLink]="item.routerLink">
+        <span [ngClass]="['steps-marker', item.color]">{{item.step}}</span>
+        <div class="steps-content">
+          <div class="is-size-6 has-text-dark">{{item.title}}</div>
+        </div>
+      </a>
     </li>
   </ul>
 </div>

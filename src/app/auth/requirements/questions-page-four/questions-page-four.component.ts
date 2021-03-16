@@ -22,11 +22,11 @@ export class QuestionsPageFourComponent implements OnInit {
   rows: Row[] = [];
   titles: MoscowColumnTitle[] = [
     {
-      title: 'Contributie van ouders',
+      title: 'Bijdrage van ouders',
       property: 'parentContribution',
       hasSubtitle: false,
       hasInfoBtn: true,
-      infoTitle: 'Contributie van de ouders',
+      infoTitle: 'Bijdrage van de ouders',
       infoHighlight: 'Kies of de ouders zelf de bijdrage plaatst in het portfolio',
       infoText:
         'Je kiest op deze pagina of ouders zelf bijdrage(n) kunnen leveren en plaatsen in het portfolio per leeftijdscategorie.',

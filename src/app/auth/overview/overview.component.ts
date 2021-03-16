@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth.service';
-import { MoSCoWRequirement, PortfolioType, UserState } from '../user.state.model';
+import { MoSCoWRequirement, UserState } from '../user.state.model';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import Settings from '../settings';
@@ -126,7 +126,7 @@ export class OverviewComponent implements OnInit {
       {
         header: 'Type portfolio',
         key: 'type',
-        width: 30,
+        width: 20,
         style: { font: { bold: true } },
       },
       ...Settings.sheetColumns
@@ -135,19 +135,20 @@ export class OverviewComponent implements OnInit {
     Settings.ageRows.forEach((row) => {
       let newRow: any = {
         type: row.title,
-        development: '',
-        evaluation: '',
-        presentation: '',
+        development: 'n.v.t.',
+        evaluation: 'n.v.t.',
+        presentation: 'n.v.t.',
       };
       ['development', 'evaluation', 'presentation'].forEach((type) => {
-        const value = get(this.userState, [
-          'portfolioRequirements',
-          type,
-          row.property,
-        ]) as MoSCoWRequirement;
-        const stringValue = this.getStringValue(value);
-
-        newRow[type] = stringValue;
+        const hasAgeGroup = get(this.userState, ['ageGroupIsAvailable', row.property]);
+        if(hasAgeGroup){
+          const value = get(this.userState, [
+            'portfolioRequirements',
+            type,
+            row.property,
+          ]);
+          newRow[type] = value.toString() + "% van portfolio";
+        }
       });
       let displayedRow = sheet.addRow(newRow);
       displayedRow.font = { bold: false };
@@ -173,17 +174,18 @@ export class OverviewComponent implements OnInit {
     Settings.ageRows.forEach((row) => {
       let newRow: any = {
         accent: row.title,
-        form: ''
+        form: 'n.v.t.'
       };
-      ['development', 'evaluation', 'presentation'].forEach((type) => {
+      const hasAgeGroup = get(this.userState, ['ageGroupIsAvailable', row.property]);
+      if(hasAgeGroup){
         const value = get(this.userState, [
           'portfolioType',
           row.property,
-        ]) as PortfolioType;
-        const stringValue = value === PortfolioType.DIGITAL? 'Digitaal' : PortfolioType.MIXED ? 'Mix' : 'Fysiek';
+        ]);
+        const stringValue = value + '% digitaal';
 
         newRow.form = stringValue;
-      });
+      }
       let displayedRow = sheet.addRow(newRow);
       displayedRow.font = { bold: false };
     });
@@ -267,18 +269,21 @@ export class OverviewComponent implements OnInit {
     Settings.ageRows.forEach((row) => {
       let newRow: any = {
         type: row.title,
-        development: '',
-        evaluation: '',
-        presentation: '',
+        development: 'n.v.t.',
+        evaluation: 'n.v.t.',
+        presentation: 'n.v.t.',
       };
       ['development', 'evaluation', 'presentation'].forEach((type) => {
-        const value = get(this.userState, [
-          property,
-          type,
-          row.property,
-        ]);
-        const stringValue =  value ? 'wel bijdragen' : 'niet bijdragen';
-        newRow[type] = stringValue;
+        const hasAgeGroup = get(this.userState, ['ageGroupIsAvailable', row.property]);
+        if(hasAgeGroup){
+          const value = get(this.userState, [
+            property,
+            type,
+            row.property,
+          ]);
+          const stringValue =  value ? 'wel bijdragen' : 'niet bijdragen';
+          newRow[type] = stringValue;
+        }
       });
       let displayedRow = sheet.addRow(newRow);
       displayedRow.font = { bold: false };

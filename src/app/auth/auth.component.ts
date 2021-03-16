@@ -27,7 +27,6 @@ export class AuthenticatedComponent  {
     '/auth/requirements': {
       step: 3,
       title: 'Set van eisen',
-      subtitle: 'Fase 3 - opmaken van een set van eisen',
       color: 'is-primary',
       previousPage: '/auth/choices',
       nextPage: '/auth/overview',

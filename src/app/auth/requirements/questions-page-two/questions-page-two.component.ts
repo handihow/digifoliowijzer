@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import Row from '../../moscow.row.model';
-import { PortfolioType, UserState } from '../../user.state.model';
+import { UserState } from '../../user.state.model';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { get, set } from 'lodash';
 import Settings from '../../settings';
@@ -26,10 +26,12 @@ export class QuestionsPageTwoComponent implements OnInit {
   }
 
   getValue(age: string){
-    if(this.userState){
-      return get(this.userState, [this.property, age]) as PortfolioType;
+    if(!this.hasAgeGroup(age)){
+      return 0;
+    } else if(this.userState){
+      return get(this.userState, [this.property, age]);
     } else {
-      return PortfolioType.DIGITAL;
+      return 0;
     }
   }
 
@@ -38,6 +40,10 @@ export class QuestionsPageTwoComponent implements OnInit {
       set(this.userState, [this.property, age], newValue.target.value);
       this.authService.updateUserState(this.userState);
     }
+  }
+
+  hasAgeGroup(ageGroup: string){
+    return get(this.userState, ['ageGroupIsAvailable', ageGroup])
   }
 
 }

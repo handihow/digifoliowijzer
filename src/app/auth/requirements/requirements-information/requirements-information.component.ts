@@ -6,7 +6,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./requirements-information.component.css']
 })
 export class RequirementsInformationComponent implements OnInit {
-
   @Output() showMoscowInfoModal: EventEmitter<boolean> = new EventEmitter();
   @Output() toNextStep: EventEmitter<boolean> = new EventEmitter();
   @Output() openInfoModal: EventEmitter<boolean> = new EventEmitter();

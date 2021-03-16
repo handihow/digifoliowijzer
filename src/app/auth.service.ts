@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import firebase from 'firebase/app';
-import { UserState, MoSCoWRequirement, PortfolioType } from './auth/user.state.model';
+import { UserState, MoSCoWRequirement } from './auth/user.state.model';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import Row from './auth/moscow.row.model';
 
@@ -73,27 +73,33 @@ export class AuthService {
       createdAt: firebase.firestore.Timestamp.now(),
       updatedAt: firebase.firestore.Timestamp.now(),
       hasAdvancedUI: false,
+      hasHiddenInfoMessage: false,
+      ageGroupIsAvailable: {
+        fourToSix: true,
+        sevenToNine: true,
+        tenToTwelve: true
+      },
       portfolioRequirements: {
         development: {
-          fourToSix: MoSCoWRequirement.WONT,
-          sevenToNine: MoSCoWRequirement.COULD,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: 0,
+          sevenToNine: 0,
+          tenToTwelve: 0
         },
         evaluation: {
-          fourToSix: MoSCoWRequirement.COULD,
-          sevenToNine: MoSCoWRequirement.MUST,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: 0,
+          sevenToNine: 0,
+          tenToTwelve: 0
         },
         presentation: {
-          fourToSix: MoSCoWRequirement.MUST,
-          sevenToNine: MoSCoWRequirement.MUST,
-          tenToTwelve: MoSCoWRequirement.MUST
+          fourToSix: 100,
+          sevenToNine: 100,
+          tenToTwelve: 100
         },
       },
       portfolioType: {
-        fourToSix: PortfolioType.PAPER,
-        sevenToNine: PortfolioType.MIXED,
-        tenToTwelve: PortfolioType.DIGITAL
+        fourToSix: 0,
+        sevenToNine: 40,
+        tenToTwelve: 100
       },
       childContribution: {
         development: {
@@ -130,18 +136,18 @@ export class AuthService {
         },
       },
       additionalRequirements: {
-        canLoginAtHome: MoSCoWRequirement.MUST,
-        canBePrinted: MoSCoWRequirement.MUST,
-        isLinkedToStudentTrackingSystem: MoSCoWRequirement.COULD,
+        canLoginAtHome: MoSCoWRequirement.WONT,
+        canBePrinted: MoSCoWRequirement.WONT,
+        isLinkedToStudentTrackingSystem: MoSCoWRequirement.WONT,
         canBeAddedStudentProgramsAndGoals: MoSCoWRequirement.WONT,
-        studentCanCreatePlanning: MoSCoWRequirement.COULD,
-        teacherCanSelectGoals: MoSCoWRequirement.COULD,
-        hasChatFunctionality: MoSCoWRequirement.MUST,
+        studentCanCreatePlanning: MoSCoWRequirement.WONT,
+        teacherCanSelectGoals: MoSCoWRequirement.WONT,
+        hasChatFunctionality: MoSCoWRequirement.WONT,
         hasGroupOverviewFunctionality: MoSCoWRequirement.WONT,
-        reportsOfConversationsWithStudentsArePartOfPortfolio: MoSCoWRequirement.COULD,
+        reportsOfConversationsWithStudentsArePartOfPortfolio: MoSCoWRequirement.WONT,
         isCommunicationPlatformWithParents: MoSCoWRequirement.WONT
       },
-      canBeUsedOnDevices: 'Computers, laptops en chromebooks',
+      canBeUsedOnDevices: '',
       isFinished: false
     }
     return defaultUserState;
@@ -177,6 +183,13 @@ export class AuthService {
       hasAdvancedUI: hasAdvancedUI,
       updatedAt: firebase.firestore.Timestamp.now(),
     });
+  }
+
+  updateHideInfoMessage(userId: string){
+    this.db.collection('users').doc(userId).update({
+      hasHiddenInfoMessage: true,
+      updatedAt: firebase.firestore.Timestamp.now()
+    })
   }
 
   setUserStateToFinished(userId: string){

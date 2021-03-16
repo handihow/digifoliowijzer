@@ -2,8 +2,8 @@
 <div *ngIf="doneInitializing" class="chart">
 <canvas baseChart width="600" height="400"
                 [datasets]="chartData"
-                [labels]="lineChartLabels"
+                [labels]="chartLabels"
                 [chartType]="barChartType"
-                [colors]="lineChartColors"
-                [options]="lineChartOptions"
+                [colors]="chartColors"
+                [options]="chartOptions"
                 ></canvas></div>

@@ -22,91 +22,56 @@ export class InformationComponent implements OnInit, OnDestroy {
   stateSub: Subscription | undefined;
   informationItems: InformationItem[] = [
     {
-      title: 'Basis',
-      highlightedText: '',
+      title: 'Digifoliowijzer',
+      highlightedText: 'De digifoliowijzer is één van de opbrengsten van de innovatievraag waarover je hier meer kunt lezen.',
       html: `
-      <p>Het Christal start vanuit de basis: door goed te kijken naar de huidige situatie en de
-          <strong>visie</strong> op toetsen en leren.
-          Daarnaast heeft de school veel aandacht voor het betrekken van <strong>leerlingen, leraren en
-              ouders</strong> in het <strong>verbeterproces</strong>.
-      </p>
-      <p>De <strong>kennis en onderzoeken</strong> die al beschikbaar zijn, worden gebruikt in het
-          onderzoek naar
-          het <strong>best passende monitor- en rapportagemiddel</strong>.
-          Ook kijkt Het Christal naar de <strong>product- en proceseisen</strong> en naar het
-          besluitvormingsproces.
-          Bij de innovatievraag/interventies wordt het <strong>netwerk</strong> van OICT’ers
-          (onderwijskundig
-          ICT’ers) en andere schoolleiders van LEV-WN volop betrokken.
-          Deze onderwijsinhoudelijke netwerken zijn erg succesvol voor de samenwerking binnen de
-          organisatie. </p>
-
-      <p>LEV staat voor <strong>Liefde En Vertrouwen</strong> en de leus van het schoolbestuur is
-          <strong>‘Geloof
-              in ontwikkeling’</strong>.
-          Dit past volgens projectleider Vincent Verkuil helemaal bij deze innovatievraag.
-          “Als je christelijk bent, dan geloof je dat kinderen <strong>uniek</strong> zijn en gemaakt zijn
-          met
-          <strong>ieder een eigen talent</strong>.
-          Ook zien wij het als onze taak hen te helpen om hun talenten te ontwikkelen.”
-      </p>
-      <p>Op de gevel van de school staat dan ook <strong>‘Groeien, geloven, stralen’</strong>.
-          “Wij willen alle kinderen écht zien en we willen dat ze trots zijn op hun ontwikkelingen.
-          Het nieuwe portfolio gaat ons helpen om de transitie te maken <strong>van leerstofgericht- naar
-              kindgericht onderwijs</strong>.”
-      </p>
+      <p>De digifoliowijzer is een webapp die je in enkele stappen tot een duidelijke ‘vraag’ richting ‘aanbod’ brengt.
+      Ook voorzien we je daarbij van handvatten en ondersteunende materialen bij het verdiepen van je kennis,
+      organiseren van teamsessies en bepalen van de visie op school rondom digitale portfolio’s.</p>
       `,
       image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/pins_met%20logo's-01.png?alt=media&token=a6e7335c-244e-43d5-a25a-3d7dd8647378",
       step: 1,
     },
     {
-      title: 'Doel',
+      title: 'Per stap wijzer',
       highlightedText:
-        'Hoe kunnen we de brede ontwikkeling van leerlingen monitoren en zichtbaar maken, zodat kind, ouders en leraar eigenaar worden van het leerproces?',
+        '',
       html: `
-      <p>Doel van de digifoliowijzer is de brede ontwikkeling van leerlingen beter te monitoren en zichtbaar te
-      maken. Het traditionele rapport - met cijfers en letters voor cognitieve en sociaal-emotionele ontwikkeling -
-      sluit onvoldoende aan bij deze ambitie. </p>
-      <p>Een digitaal portfolio biedt meer inzicht en zorgt voor eigenaarschap bij leerlingen en ouders. </p>
-      <p>Wat zijn de mogelijkheden? En hoe pak je dit veranderproces aan? </p>
+      <p>Bij stap: <strong>‘2. Onderzoeken en verdiepen’</strong> vind je theoretische kaders, die als fundament voor deze
+      innovatievraag hebben gediend. Deze gaven het team inhoudelijk houvast en verdiepten het gesprek over
+      wat paste bij de school. Ook vind je hier een download met ‘presentatiekaarten’ (kant-en-klare PowerPoint)
+      met een aantal van die inhoudelijke kaders om te gebruiken bij teamsessies en beeldvorming.
+      Krachtig is ook de toolkit ‘Verkenning Digitale Portfolio’s’ van Kennisnet die je kunt downloaden en
+      gebruiken bij het bepalen van visie en focus. Met een marktoverzichten van aanbieders (PO) geven we je
+      tot slot grip en een eerste indruk van partijen welke je met jouw opbrengsten uit deze tool zou kunnen
+      benaderen. Genoeg ingrediënten voor een verrijkende stap bij jullie schoolproces!</p>
+      <p>Na het beantwoorden van cruciale vragen en dilemma’s bij stap <strong>‘3. Set van eisen’</strong>
+      krijg je bij <strong>‘4. Overzicht en rapport’</strong> een duidelijk overzicht in de gewenste accenten op je school.
+      Dit overzicht is te printen of als bestand op te slaan en te bewerken.</p>
+      <p>Hiermee kun je met jouw schoolspecifieke vragen helder en overzichtelijk richting aanbieders communiceren:
+      <span class='is-italic'>‘met vraag naar aanbod’!</span></p>
       `,
       image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Square_pennendoos.png?alt=media&token=8f7a99b1-8e1b-4baa-b6fb-eb58a4d09177",
       step: 2,
     },
     {
-      title: 'Ambitie',
-      highlightedText: '',
+      title: 'Innovatievraag',
+      highlightedText: 'Hoe kunnen we de brede ontwikkeling van leerlingen monitoren en zichtbaar maken, zodat kind, ouders en leraar eigenaar worden van het leerproces?',
       html: `
-      <p>Basisschool Het Christal, onderdeel van vereniging LEV-WN, werkt met traditionele
-          <strong>rapporten</strong>.
-          De leraar geeft leerlingen een beoordeling voor de cognitieve en sociaal emotionele
-          ontwikkeling.
-          De Cito scores gaan ook mee naar huis.
-      </p>
-      <p>Dit past niet bij de visie van de school en het bestuur op <strong>toekomstgericht
-              onderwijs</strong>, waarbij de leerling, ouders en leraar eigenaar zijn van het leerproces.
-          Bovendien heeft LEV-WN als ambitie om te werken met doorgaande leerlijnen en in betere
-          <strong>samenwerking</strong> met voorschoolse opvang en middelbare scholen.
-      </p>
-      <p>Daarom wil Het Christal de brede ontwikkeling van leerlingen beter <strong>monitoren en zichtbaar
-              maken</strong>.
-          Werken met een <strong>digitaal portfolio</strong> als monitor- en rapportagemiddel zou hier
-          goed bij passen.
-          Het aanbod is echter enorm en er is behoefte aan meer kennis en expertise om tot goede
-          <strong>functionele eisen </strong>voor een digitaal portfolio te komen.
-      </p>
-      <p>De vraag naar een ander digitaal monitor- en rapportagemiddel speelt ook voor andere scholen van
-          LEV-WN en ook landelijk.
-          De uitkomsten van de innovatievraag, waaronder mogelijk een kijkwijzer digitale portfolio’s,
-          gaat Het Christal <strong>delen met de sector</strong>.
-      </p>
+      <p>Vereniging LEV-WN wil de brede ontwikkeling van kinderen beter monitoren en zichtbaar te maken.
+      Het traditionele rapport - met cijfers en letters voor cognitieve en sociaal-emotionele ontwikkeling -
+      sluit onvoldoende aan bij deze ambitie. Een digitaal portfolio biedt meer inzicht en zorgt voor eigenaarschap
+      bij leerlingen en ouders.</p>
+      <p>Wat zijn de mogelijkheden? En hoe pak je dit veranderproces aan?</p>
+      <p>Bekijk de <a href='https://www.samenslimmerpo.nl/innovatievragen' target=_blank>innovatievragen</a>
+      op de website van de PO-raad.</p>
       `,
       image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Square_puntenslijper.png?alt=media&token=0d0e67c4-f346-4c3e-b252-ab2ab691187f",
       step: 3,
     },
     {
-      title: 'Beoogde resultaten',
-      highlightedText: 'Leerling, ouders en leraar worden eigenaar van het leerproces',
+      title: 'Achtergrond',
+      highlightedText: 'Interview met Vincent',
       html: `
       <ul>
           <li><strong>draagvlak verkrijgen</strong> onder leraren en ouders voor het gaan werken met een

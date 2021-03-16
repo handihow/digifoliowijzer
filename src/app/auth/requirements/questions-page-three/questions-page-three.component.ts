@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { UserState } from '../../user.state.model';
 import Row from '../../moscow.row.model';
 import MoscowColumnTitle from '../../moscow.title.model';
-import { AuthService } from '../../../auth.service';
 import Settings from '../../settings';
 
 @Component({
@@ -24,11 +23,11 @@ export class QuestionsPageThreeComponent implements OnInit {
   rows: Row[] = [];
   titles: MoscowColumnTitle[] = [
     {
-      title: 'Contributie van leerling',
+      title: 'Bijdrage van leerling',
       property: '',
       hasSubtitle: false,
       hasInfoBtn: true,
-      infoTitle: 'Contributie van het kind',
+      infoTitle: 'Bijdrage van het kind',
       infoHighlight: 'Kies of het kind zelf de bijdrage plaatst in het portfolio',
       infoText:
         'Je kiest op deze pagina of kinderen zelf bijdrage(n) kunnen plaatsen in het portfolio per leeftijdscategorie.',
@@ -37,7 +36,7 @@ export class QuestionsPageThreeComponent implements OnInit {
   ];
   columns: string[] = ['development', 'evaluation', 'presentation'];
 
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.rows = Settings.ageRows;
@@ -53,4 +52,5 @@ export class QuestionsPageThreeComponent implements OnInit {
     this.modalText = this.titles[index].infoText || '';
     this.toggleModal();
   }
+
 }

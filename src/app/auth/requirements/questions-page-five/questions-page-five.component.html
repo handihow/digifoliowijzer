@@ -22,14 +22,13 @@
     </div>
     <div class="columns" *ngIf="step===8">
       <div class="column is-6">
-        Op welke device wil je dat het digitale portfolio goed te gebruiken is?
-        Vul in:
+        Zijn er devices op school waar het portfolio op gebruikt zou moeten worden? Vul in:
       </div>
       <div class="column">
         <input
           class="input"
           type="text"
-          placeholder="Text input"
+          placeholder="Bijvoorbeeld iPads, laptops en chromebooks"
           [value]="getTextValue()"
           (change)="setTextValue($event)"
         />

@@ -1,4 +1,4 @@
-<div class="has-text-centered mt-2" *ngIf="![1,3,4,5].includes(step)">
+<div class="has-text-centered mt-2" *ngIf="step>5">
   <button class="button is-small is-rounded is-light is-info is-outlined" (click)="toggleMoscowInfoModal()">
     <span class="icon mr-2"><fa-icon [icon]="faQuestion"></fa-icon></span>
     <strong>M</strong>o<strong>SC</strong>o<strong>W</strong>

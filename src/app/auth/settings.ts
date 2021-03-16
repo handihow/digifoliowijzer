@@ -23,6 +23,8 @@ export default class Settings {
       property: 'development',
       hasSubtitle: true,
       hasInfoBtn: true,
+      color: 'is-info',
+      tooltipColor: 'has-tooltip-info',
       subtitle: 'proces',
       infoTitle: 'Ontwikkelingsportfolio (proces)',
       infoHighlight: 'Zichtbaar maken van een ontwikkeling',
@@ -34,6 +36,8 @@ export default class Settings {
       property: 'evaluation',
       hasSubtitle: true,
       hasInfoBtn: true,
+      color: 'is-warning',
+      tooltipColor: 'has-tooltip-warning',
       subtitle: 'evaluatie',
       infoTitle: 'Beoordelingsportfolio (evaluatie)',
       infoHighlight:
@@ -46,6 +50,8 @@ export default class Settings {
       property: 'presentation',
       hasSubtitle: true,
       hasInfoBtn: true,
+      color: 'is-link',
+      tooltipColor: 'has-tooltip-link',
       subtitle: 'product',
       infoTitle: 'Presentatieportfolio (product)',
       infoHighlight: 'Producten waar een leerling trots op is of goed in is',
@@ -56,43 +62,43 @@ export default class Settings {
 
   public static additionalRequirementRows: Row[] = [
     {
-      title: "Wil je dat ouders en kinderen ook thuis kunnen inloggen op het digitale portfolio?",
+      title: "Ouders en kinderen kunnen ook thuis inloggen op het digitale portfolio.",
       property: "canLoginAtHome"
     },
     {
-      title: "Wil je dat het digitale portfolio af te drukken is?",
+      title: "De inhoud van het digitale portfolio is af te drukken.",
       property: "canBePrinted"
     },
     {
-      title: "Wil je dat het digitale portfolio een automatische koppeling heeft met verwerkingssoftware en/of LOVS?",
+      title: "Het digitale portfolio heeft een automatische koppeling met verwerkingssoftware en/of LOVS.",
       property: "isLinkedToStudentTrackingSystem"
     },
     {
-      title: "Wil je zelf leerlijnen en leerdoelen kunnen toevoegen aan het digitale portfolio?",
+      title: "Je kunt zelf  leerlijnen en leerdoelen toevoegen aan het digitale portfolio.",
       property: "canBeAddedStudentProgramsAndGoals"
     },
     {
-      title: "Wil je dat leerlingen zelf kunnen kiezen en plannen aan welke doelen ze werken?",
+      title: "Leerlingen kunnen zelf kiezen en plannen aan welke doelen ze werken.",
       property: "studentCanCreatePlanning"
     },
     {
-      title: "Wil je als leerkracht doelen kunnen selecteren voor kinderen in het digitale portfolio waar een kind een bepaalde periode aan moet werken?",
+      title: "Je kunt in het digitale portfolio als leerkracht doelen selecteren waar een kind een bepaalde periode aan moet werken.",
       property: "teacherCanSelectGoals"
     },
     {
-      title: "Wil je als leerkracht via het digitale portfolio kunnen chatten met kinderen?",
+      title: "In de omgeving van het digitale portfolio kun je chatten met kinderen.",
       property: "hasChatFunctionality"
     },
     {
-      title: "Wil je in de omgeving van het digitale portfolio een groepsoverzicht hebben van alle kinderen?",
+      title: "In de omgeving van het digitale portfolio kun je ook een groepsoverzicht genereren.",
       property: "hasGroupOverviewFunctionality"
     },
     {
-      title: "Wil je dat verslagjes van kindgesprekken onderdeel worden van je digitale portfolio?",
+      title: "Verslagen van kindgesprekken vormen onderdeel van het digitale portfolio.",
       property: "reportsOfConversationsWithStudentsArePartOfPortfolio"
     },
     {
-      title: "Wil je dat het digitale portfolio ook fungeert als een communicatiemiddel met ouders voor bijv. het versturen van planningen of nieuwsbrieven?",
+      title: "Het digitale portfolio fungeert ook als een communicatiemiddel met ouders (voor bijv. het versturen van planningen of nieuwsbrieven).",
       property: "isCommunicationPlatformWithParents"
     }
   ];
@@ -106,20 +112,23 @@ export default class Settings {
     {
       header: 'Ontwikkeling',
       key: 'development',
-      width: 30,
+      width: 20,
       style: { font: { bold: true } },
+      numFmt:'@'
     },
     {
       header: 'Beoordeling',
       key: 'evaluation',
-      width: 30,
+      width: 20,
       style: { font: { bold: true } },
+      numFmt:'@'
     },
     {
       header: 'Presentatie',
       key: 'presentation',
-      width: 30,
+      width: 20,
       style: { font: { bold: true } },
+      numFmt:'@'
     },
   ];
 

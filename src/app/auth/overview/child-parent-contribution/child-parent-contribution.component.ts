@@ -30,11 +30,14 @@ export class ChildParentContributionComponent implements OnInit {
   }
 
   hasContribution(contributionType: string, portfolioType: string, age: string): boolean{
-    if(this.userState){
+    if(this.userState && this.hasAgeGroup(age)){
       return get(this.userState, [contributionType, portfolioType, age]) as boolean;
-    } else {
-      return false;
     }
+    return false;
+  }
+
+  hasAgeGroup(ageGroup: string){
+    return get(this.userState, ['ageGroupIsAvailable', ageGroup])
   }
 
 }

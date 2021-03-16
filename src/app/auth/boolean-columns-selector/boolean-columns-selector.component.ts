@@ -28,15 +28,17 @@ export class BooleanColumnsSelectorComponent implements OnInit {
   }
 
   getButtonsAreDisabled(category: string, age: string){
-    if(this.userState && this.property && this.property !== 'portfolioRequirements'){
-      return get(this.userState, ['portfolioRequirements', category, age]) as MoSCoWRequirement === MoSCoWRequirement.WONT;
+    if(!this.hasAgeGroup(age)){
+      return true;
     } else {
       return false;
     }
   }
 
   getRequirementValue(category: string, age: string) {
-    if(this.userState && this.property){
+    if(!this.hasAgeGroup(age)){
+      return false;
+    } else if(this.userState && this.property){
       const mustReturnFalse = get(this.userState, ['portfolioRequirements', category, age]) as MoSCoWRequirement === MoSCoWRequirement.WONT;
       return mustReturnFalse ? false : get(this.userState, [this.property, category, age]);
     } else {
@@ -49,6 +51,10 @@ export class BooleanColumnsSelectorComponent implements OnInit {
       set(this.userState, [this.property, category, age], newValue);
       this.authService.updateUserState(this.userState);
     }
+  }
+
+  hasAgeGroup(ageGroup: string){
+    return get(this.userState, ['ageGroupIsAvailable', ageGroup])
   }
 
 }

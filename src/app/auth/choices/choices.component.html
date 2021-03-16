@@ -8,7 +8,7 @@
               <a
                 (click)="setStep(item.step)"
                 [ngClass]="step === item.step ? 'is-active' : ''"
-                >{{ item.menuTitle }}</a
+                >{{ item.title }}</a
               >
             </li>
           </ul>
@@ -24,7 +24,7 @@
         <h4 class="title is-4">{{ getTitle() }}</h4>
         <div class="content" [innerHTML]="getHTML()"></div>
       </div>
-      <div class="column is-3">
+      <div class="column is-3" *ngIf="hasLinks()">
         <a *ngFor="let link of getLinks()" [href]="link.href" target="_blank">
           <div class="card">
             <div class="card-image">
@@ -44,10 +44,9 @@
   </div>
 </section>
 <app-component-step-buttons
-  *ngIf="step === 3"
   buttonColorClass="is-link"
-  [isBackButtonHidden]="true"
-  [isLastStep]="true"
+  [isBackButtonHidden]="step === 1"
+  [isLastStep]="step === 3"
   toNextComponentButtonText="Naar set van eisen"
   nextComponentRouterLink="/auth/requirements"
 ></app-component-step-buttons>

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, OnChanges, Output } from '@angular/core';
 import { MoSCoWRequirement } from '../user.state.model';
 import {
-  faQuestion,
+  faPlus,
   faCheck,
   faMinus,
   IconDefinition,
@@ -34,7 +34,7 @@ export class MoscowButtonsComponent implements OnInit, OnChanges {
   should: Requirement = {
     value: MoSCoWRequirement.SHOULD,
     buttonText: 'S',
-    icon: faQuestion,
+    icon: faPlus,
     cssClass: 'is-link',
     tooltip: 'should haves',
     tooltipAdvanced: 'should haves',
@@ -42,7 +42,7 @@ export class MoscowButtonsComponent implements OnInit, OnChanges {
   could: Requirement = {
     value: MoSCoWRequirement.COULD,
     buttonText: 'C',
-    icon: faQuestion,
+    icon: faPlus,
     cssClass: 'is-info',
     tooltip: 'should/could haves',
     tooltipAdvanced: 'chould haves',

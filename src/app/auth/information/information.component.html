@@ -24,15 +24,19 @@
           "{{ getHighlightedText() }}"
         </blockquote>
         <div [innerHTML]="getHTML()"></div>
+        <p></p>
+        <p *ngIf="step === 2 || step === 3">
+          Ga direct naar stap 2: <a routerLink="/auth/choices">onderzoeken en verdiepen</a>.
+        </p>
       </div>
     </div>
   </div>
 </section>
+
 <app-component-step-buttons
-  *ngIf="step === 4"
   buttonColorClass="is-warning"
-  [isBackButtonHidden]="true"
-  [isLastStep]="true"
-  toNextComponentButtonText="Volgende stap"
+  [isBackButtonHidden]="step === 1"
+  [isLastStep]="step === 4"
+  toNextComponentButtonText="Naar onderzoeken en verdiepen"
   nextComponentRouterLink="/auth/choices"
 ></app-component-step-buttons>

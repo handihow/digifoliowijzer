@@ -1,0 +1,22 @@
+.tickmarks {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: -23px;
+  padding-top: 0px;
+  padding-left: 7px;
+  padding-right: 5px;
+}
+option {
+  position: relative;
+  background: white;
+  top: 10px;
+  font-size: 8px;
+  width: 1px;
+  border-left: 1px solid black;
+}
+
+.anchor-lookalike{
+  cursor:pointer;
+  text-decoration:underline;
+}

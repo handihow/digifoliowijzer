@@ -7,12 +7,6 @@ export enum MoSCoWRequirement {
 	'WONT'
 }
 
-export enum PortfolioType {
-  'PAPER',
-  'MIXED',
-  'DIGITAL'
-}
-
 export interface UserState {
 	id: string;
 	currentPage: string;
@@ -20,27 +14,33 @@ export interface UserState {
 	createdAt: firebase.firestore.Timestamp;
 	updatedAt: firebase.firestore.Timestamp;
   hasAdvancedUI: boolean;
+  hasHiddenInfoMessage: boolean;
+  ageGroupIsAvailable: {
+    fourToSix: boolean,
+    sevenToNine: boolean,
+    tenToTwelve: boolean
+  },
 	portfolioRequirements: {
 		development: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: number,
+			sevenToNine: number,
+			tenToTwelve: number
 		},
 		evaluation: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: number,
+			sevenToNine: number,
+			tenToTwelve: number
 		},
 		presentation: {
-			fourToSix: MoSCoWRequirement,
-			sevenToNine: MoSCoWRequirement,
-			tenToTwelve: MoSCoWRequirement
+			fourToSix: number,
+			sevenToNine: number,
+			tenToTwelve: number
 		},
 	};
   portfolioType: {
-    fourToSix: PortfolioType,
-    sevenToNine: PortfolioType,
-    tenToTwelve: PortfolioType
+    fourToSix: number,
+    sevenToNine: number,
+    tenToTwelve: number
   };
   childContribution: {
 		development: {

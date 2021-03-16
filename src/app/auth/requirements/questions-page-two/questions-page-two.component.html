@@ -1,7 +1,7 @@
 <section class="section">
   <div class="container" id="restricted-size">
     <div class="columns is-hidden-mobile">
-      <div class="column">
+      <div class="column is-4">
         <h5 class="title is-6">Accent op fysiek of digitaal?</h5>
       </div>
       <div class="column">
@@ -18,12 +18,16 @@
       </div>
     </div>
     <div class="columns mb-0" *ngFor="let row of rows">
-      <div class="column">
+      <div class="column is-4">
         <div class="level is-mobile mt-3">
           <div class="level-left">
-            <h5 class="title is-6">
+            <div class="level-item">
+            <h5 [ngClass]="hasAgeGroup(row.property) ? 'title is-6' : ''">
               {{ row.title }}
-            </h5>
+            </h5></div>
+            <div class="level-item" *ngIf="!hasAgeGroup(row.property)">
+              n.v.t.
+            </div>
           </div>
           <div class="level-item is-hidden-tablet">
             <span class="icon"><fa-icon [icon]="faArrowLeft"></fa-icon></span>
@@ -38,13 +42,25 @@
       <div class="column">
         <input
           class="slider is-primary is-circle is-fullwidth"
-          step="1"
+          step="20"
           min="0"
-          max="2"
+          max="100"
           [value]="getValue(row.property)"
           type="range"
           (change)="setValue($event, row.property)"
+          list="tickmarks"
+          [id]="row.property"
+          [disabled]="!hasAgeGroup(row.property)"
         />
+        <datalist class="tickmarks">
+          <option value="0"></option>
+          <option value="20"></option>
+          <option value="40"></option>
+          <option value="60"></option>
+          <option value="80"></option>
+          <option value="100"></option>
+        </datalist>
+        <output class="tag" [for]="row.property">{{getValue(row.property)}}%</output>
       </div>
     </div>
   </div>

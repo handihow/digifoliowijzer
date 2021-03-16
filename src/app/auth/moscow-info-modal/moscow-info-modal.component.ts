@@ -1,4 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  faPlus,
+  faCheck,
+  faMinus,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-moscow-info-modal',
@@ -7,6 +12,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class MoscowInfoModalComponent implements OnInit {
 
+  faPlus = faPlus;
+  faCheck = faCheck;
+  faMinus = faMinus;
   @Input() showModal: boolean = false;
   @Input() hasAdvancedUI: boolean = false;
   @Output() closedModal: EventEmitter<boolean> = new EventEmitter(false);

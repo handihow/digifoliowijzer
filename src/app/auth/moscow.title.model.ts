@@ -7,4 +7,6 @@ export default interface MoscowColumnTitle {
   infoTitle?: string;
   infoHighlight?: string;
   infoText?: string;
+  color?: string;
+  tooltipColor?: string;
 };
