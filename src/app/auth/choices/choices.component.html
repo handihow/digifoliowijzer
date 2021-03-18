@@ -19,14 +19,25 @@
           </figure>
         </div>
       </div>
-
       <div class="column">
         <h4 class="title is-4">{{ getTitle() }}</h4>
         <div class="content" [innerHTML]="getHTML()"></div>
       </div>
-      <div class="column is-3" *ngIf="hasLinks()">
+      <div class="column is-4" *ngIf="hasLinks()">
+        <div class="card mb-2 modal-card" *ngFor="let modal of getModals(); let i=index" (click)="setModalContent(i)">
+          <div class="card-image">
+            <figure class="image is-5by2">
+              <img [src]="modal.image" [alt]="modal.title" />
+            </figure>
+          </div>
+          <header class="card-header">
+            <p class="card-header-title">
+              {{ modal.title }}
+            </p>
+          </header>
+        </div>
         <a *ngFor="let link of getLinks()" [href]="link.href" target="_blank">
-          <div class="card">
+          <div class="card mb-2">
             <div class="card-image">
               <figure class="image is-5by2">
                 <img [src]="link.image" [alt]="link.alt" />
@@ -50,3 +61,29 @@
   toNextComponentButtonText="Naar set van eisen"
   nextComponentRouterLink="/auth/requirements"
 ></app-component-step-buttons>
+<div class="modal" [ngClass]="{ 'is-active': showModal }">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Beschikbare downloads</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <p>Je kunt hier de volgende documenten downloaden:</p>
+        <ul>
+          <li *ngFor="let link of modalLinks">
+            <a [href]="link.href" target=_blank>
+              {{link.title}}
+            </a>
+          </li>
+        </ul>
+        <p>{{additionalModalInformation}}</p>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="toggleModal()">Sluiten</button>
+    </footer>
+  </div>
+</div>
+
