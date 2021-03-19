@@ -23,32 +23,16 @@
         <h4 class="title is-4">{{ getTitle() }}</h4>
         <div class="content" [innerHTML]="getHTML()"></div>
       </div>
-      <div class="column is-4" *ngIf="hasLinks()">
-        <div class="card mb-2 modal-card" *ngFor="let modal of getModals(); let i=index" (click)="setModalContent(i)">
-          <div class="card-image">
-            <figure class="image is-5by2">
-              <img [src]="modal.image" [alt]="modal.title" />
-            </figure>
-          </div>
-          <header class="card-header">
-            <p class="card-header-title">
-              {{ modal.title }}
-            </p>
-          </header>
+      <div class="column is-3" *ngIf="hasLinks()">
+        <div class="box p-2 m-2" *ngFor="let modal of getModals(); let i=index" (click)="setModalContent(i)">
+          <figure class="image is-5by2" >
+            <img [src]="modal.image" [alt]="modal.title"/>
+          </figure>
         </div>
-        <a *ngFor="let link of getLinks()" [href]="link.href" target="_blank">
-          <div class="card mb-2">
-            <div class="card-image">
-              <figure class="image is-5by2">
-                <img [src]="link.image" [alt]="link.alt" />
-              </figure>
-            </div>
-            <header class="card-header">
-              <p class="card-header-title">
-                {{ link.title }}
-              </p>
-            </header>
-          </div>
+        <a class="box p-2 m-2" *ngFor="let link of getLinks()" [href]="link.href" target="_blank">
+          <figure class="image is-5by2">
+            <img [src]="link.image" [alt]="link.alt" />
+          </figure>
         </a>
       </div>
     </div>

@@ -35,10 +35,29 @@ export class ChoicesComponent implements OnInit, OnDestroy {
   choiceItems: ChoiceItem[] = [
     {
       title: 'Inleiding',
+      modals: [],
+      links: [],
+      html: `
+      <p>Bij ‘visievorming’ vind je theoretische kaders, die als fundament voor deze innovatievraag hebben gediend.
+      Deze kunnen jou en je team inhoudelijke verdieping bieden.
+      Ook vind je hier een download met ‘presentatiekaarten’ (kant-en-klare PowerPoint) met een aantal
+      van die inhoudelijke kaders om te gebruiken bij teamsessies en beeldvorming.
+      Krachtig is ook de toolkit ‘Verkenning Digitale Portfolio’s’ van Kennisnet die je kunt downloaden en
+      gebruiken bij het bepalen van visie en focus. </p>
+      <p>Bij ‘marktverkenning’ vind je een marktoverzichten van aanbieders (PO) waarbij we je tot slot
+      grip geven en een eerste indruk van partijen welke je met jouw opbrengsten uit deze
+      tool zou kunnen benaderen.</p>
+      `,
+      image:
+        'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Square_lamp.png?alt=media&token=9010b0ea-639d-40a9-9010-40d1a6ffbc7f',
+      step: 1,
+    },
+    {
+      title: 'Visievorming',
       modals: [
         {
           title: 'Toolkit | Kennisnet | Verkenning Digitaal Portfolio',
-          image: 'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Download%201.png?alt=media&token=6a180d72-eb5f-412e-9f49-48bcda042012',
+          image: 'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/4.png?alt=media&token=4cd6fecf-4003-40b3-98df-34f820b4dad1',
           links: [
             {
               title: 'Handleiding van Toolkit | Kennisnet | Verkenning Digitaal Portfolio',
@@ -62,30 +81,10 @@ export class ChoicesComponent implements OnInit, OnDestroy {
             }
           ],
           additionalInfo: "Wil je graag een fysiek exemplaar ontvangen? Neem dan contact op met Kennisnet support via support@kennisnet.nl of op op 0800 321 22 33."
-        }
-      ],
-      links: [],
-      html: `
-      <p>Bij ‘visievorming’ vind je theoretische kaders, die als fundament voor deze innovatievraag hebben gediend.
-      Deze kunnen jou en je team inhoudelijke verdieping bieden.
-      Ook vind je hier een download met ‘presentatiekaarten’ (kant-en-klare PowerPoint) met een aantal
-      van die inhoudelijke kaders om te gebruiken bij teamsessies en beeldvorming.
-      Krachtig is ook de toolkit ‘Verkenning Digitale Portfolio’s’ van Kennisnet die je kunt downloaden en
-      gebruiken bij het bepalen van visie en focus. </p>
-      <p>Bij ‘marktverkenning’ vind je een marktoverzichten van aanbieders (PO) waarbij we je tot slot
-      grip geven en een eerste indruk van partijen welke je met jouw opbrengsten uit deze
-      tool zou kunnen benaderen.</p>
-      `,
-      image:
-        'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Square_lamp.png?alt=media&token=9010b0ea-639d-40a9-9010-40d1a6ffbc7f',
-      step: 1,
-    },
-    {
-      title: 'Visievorming',
-      modals: [
+        },
         {
           title: 'Onderzoek & Verdieping | Digitale portfolio\'s',
-          image: 'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Download%202.png?alt=media&token=6ba40ade-6579-40ae-8e4e-72cd15f94b2a',
+          image: 'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/2.png?alt=media&token=b6824a52-5380-462f-92e6-01cc48335594',
           links: [
             {
               title: 'Blended portfolio | Theoretisch Kader',
@@ -105,7 +104,7 @@ export class ChoicesComponent implements OnInit, OnDestroy {
             'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/PresentatiekaartenO21FINAL.pptx?alt=media&token=83f13163-c5a4-4dda-89d5-9840664a92af',
           alt: 'Presentatiekaarten | Teamsessie',
           image:
-            'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Download%203.png?alt=media&token=558105ec-50c3-4d0c-a28c-484e0c80ff07',
+            'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/3.png?alt=media&token=a97b8e0f-4a02-4f21-aa3b-f432d7bc354b',
         },
       ],
       html: `
@@ -130,7 +129,7 @@ export class ChoicesComponent implements OnInit, OnDestroy {
             'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/PresentatiekaartenO21FINAL.pptx?alt=media&token=83f13163-c5a4-4dda-89d5-9840664a92af',
           alt: 'Overzicht marktpartijen',
           image:
-            'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Download%204.png?alt=media&token=426e4cfa-0ffb-4262-ab29-aa88e6d74a06',
+            'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/1.png?alt=media&token=97b287e0-e56b-4a78-9eec-b385bae5db9a',
         }
       ],
       html: `

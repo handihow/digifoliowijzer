@@ -56,7 +56,7 @@ export class FooterComponent implements OnInit {
         "Onderwijsadviesbureau O21 heeft LEV WN scholengroep begeleid tijdens het proces.",
         "Ook heeft het bedrijf een grote hand gehad in het uitdenken en tot stand brengen van deze tool."
       ],
-      image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/logos%20grijs-20.png?alt=media&token=b8ea767b-e281-4688-9b34-ff3d561a10c7"
+      image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/LogoZW.png?alt=media&token=0287201d-bb35-4202-912b-dd3f53fce5a9"
 
     },
     {
