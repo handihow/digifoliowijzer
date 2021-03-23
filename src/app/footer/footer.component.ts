@@ -22,19 +22,20 @@ export class FooterComponent implements OnInit {
       name: "LEV-WN scholengroep",
       link: "https://levwn.nl/",
       description: [
-        "LEV scholengroep West Nederland heeft de innovatievraag ingediend.",
-        "De vereniging deelt nu de uitkomsten in de vorm van deze web applicatie.",
-        "De verzamelde informatie is via links beschikbaar in de tool."
+        "LEV scholengroep West Nederland heeft deze innovatievraag ingediend.",
+        "De vereniging deelt nu de uitkomsten in de vorm van deze webapplicatie,",
+        "waarmee scholen ook zelf handvatten kunnen maken en ontvangen."
       ],
-      image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/logos%20grijs-21.png?alt=media&token=f6c1bc39-9a21-4c5c-a333-96bf37b27956"
+      image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/zw%20-%20lev-wn.png?alt=media&token=c0d6f702-d935-4154-969e-462e5b3ff882"
     },
     {
       name: "Kennisnet",
       link: "https://www.kennisnet.nl/",
       description: [
-        "Kennisnet heeft de toolkit Verkenning Digitaal Portfolio gepubliceerd.",
-        "De toolkit is veelvuldig gebruikt tijdens het traject.",
-        "De toolkit is prominent aanwezig in de downloadbare links."
+        "Tijdens het proces zijn verschillende instrumenten gebruikt, waarbij de toolkit",
+        "‘Verkenning Digitaal Portfolio’ belangrijke inzichten gaf.",
+        "Met deze toolkit breng je in kaart hoe op school leerlingen worden begeleid in",
+        "hun leerproces, en op welke momenten een digitaal portfolio hierin kan ondersteunen."
       ],
       image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/logos%20grijs-22.png?alt=media&token=c0fa0a6c-d2c6-4a55-bd1f-551422ee2f03"
 
@@ -43,10 +44,10 @@ export class FooterComponent implements OnInit {
       name: "PO-raad",
       link: "https://www.poraad.nl/",
       description: [
-        "De PO-raad organiseert de innovatievragen.",
-        "De vereniging verleent ook de subsidie om de uitkomsten mogelijk te maken."
+        "Met behulp van het project 'innovatievragen' ondersteunt de PO-Raad haar leden bij verandervraagstukken",
+        "op het gebied van ICT en Anders organiseren."
       ],
-      image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/logos%20grijs-19.png?alt=media&token=ea0f301e-b1e0-4331-851e-eaf12bdb1be4"
+      image: "https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/zw%20-%20poraad.png?alt=media&token=883e6756-ea3e-4cb9-99f7-e91bff32f225"
 
     },
     {

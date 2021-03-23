@@ -8,14 +8,17 @@
               <a
                 (click)="setStep(i + 1)"
                 [ngClass]="step === i + 1 ? 'is-active' : ''"
-                >{{ item }}</a
+                >{{ item.sidebarTitle }}</a
               >
             </li>
           </ul>
         </aside>
       </div>
       <div class="column">
-        <h3 class="title is-5">{{ overviewItems[step - 1] }}</h3>
+        <div
+          class="mb-5 is-size-5"
+          *ngIf="overviewItems[step-1].title" [innerHTML]="overviewItems[step-1].title"></div>
+        <h3 class="title is-5 mb-5" *ngIf="!overviewItems[step-1].title">{{ overviewItems[step - 1].sidebarTitle }}</h3>
         <app-portfolio-type-chart
           *ngIf="step === 1 && userState"
           [userState]="userState"
@@ -81,3 +84,12 @@
     <div class="pdf__footer">Digifoliowijzer resultaten - pagina 2</div>
   </div>
 </section>
+
+<app-component-step-buttons
+  *ngIf="!pdfPreview"
+  buttonColorClass="is-success"
+  [isBackButtonHidden]="step === 1"
+  [isLastStep]="step === 5"
+  toNextComponentButtonText="Sessie afsluiten"
+  nextComponentRouterLink="/logout"
+></app-component-step-buttons>

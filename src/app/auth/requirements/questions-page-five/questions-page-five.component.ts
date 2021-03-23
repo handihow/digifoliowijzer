@@ -31,7 +31,7 @@ export class QuestionsPageFiveComponent implements OnInit {
     if(this.step === 6){
       this.rows = Settings.additionalRequirementRows.slice(0,3);
     } else if(this.step===7){
-      this.rows = Settings.additionalRequirementRows.slice(3,6);
+      this.rows = Settings.additionalRequirementRows.slice(3,7);
     } else {
       this.rows = Settings.additionalRequirementRows.slice(7);
     }

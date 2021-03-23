@@ -20,8 +20,7 @@
         </div>
       </div>
       <div class="column content">
-        <blockquote *ngIf="getHighlightedText().length > 0" class="is-italic">
-          "{{ getHighlightedText() }}"
+        <blockquote *ngIf="getHighlightedText().length > 0" class="is-italic" [innerHTML]="getHighlightedText()">
         </blockquote>
         <div [innerHTML]="getHTML()"></div>
         <p></p>

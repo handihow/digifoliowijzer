@@ -17,7 +17,7 @@ option {
   top: 10px;
   font-size: 8px;
   width: 1px;
-  border-left: 1px solid black;
+  border-left: 1px solid grey;
 }
 
 output {

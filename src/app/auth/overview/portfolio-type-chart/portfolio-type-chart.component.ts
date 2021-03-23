@@ -24,7 +24,7 @@ export class PortfolioTypeChartComponent implements OnInit {
   typeChartProps = {
     yAxisID: 'y-axis-portfolioType',
     stack: 'types',
-    type: 'bar',
+    type: 'line',
   };
   xAxesProps: ChartXAxe = {
     stacked: true,
@@ -51,7 +51,7 @@ export class PortfolioTypeChartComponent implements OnInit {
       callback: (value: number) => {
         let displayedValue = value + '%';
         return displayedValue;
-      },
+      }
     },
   };
   chartData: ChartDataSets[] = [
@@ -72,17 +72,29 @@ export class PortfolioTypeChartComponent implements OnInit {
     },
     {
       data: [],
-      label: 'fysiek',
+      label: 'digitaal',
+      pointRadius: [0,3,3,3,0],
+      pointHitRadius: [0,3,3,3,0],
       ...this.typeChartProps,
     },
     {
       data: [],
-      label: 'digitaal',
+      label: 'fysiek',
+      pointRadius: [0,3,3,3,0],
+      pointHitRadius: [0,3,3,3,0],
       ...this.typeChartProps,
-    },
+    }
   ];
-  chartLabels: Label[] = ['4-6 jaar', '7-9 jaar', '10-12 jaar'];
+  chartLabels: Label[] = ['', '4-6 jaar', '7-9 jaar', '10-12 jaar', ''];
   chartOptions: ChartOptions = {
+    elements: {
+      point: {
+        hoverRadius: 6
+      },
+      line: {
+        tension: 0
+      }
+    },
     legend: {
       display: true,
       position: 'bottom',
@@ -99,7 +111,22 @@ export class PortfolioTypeChartComponent implements OnInit {
         {
           id: 'y-axis-portfolioRequirements',
           position: 'left',
-          ...this.yAxesProps
+          ...this.yAxesProps,
+          ticks: {
+            display: true,
+            fontSize: 14,
+            stepSize: 20,
+            fontFamily: 'Noto Sans',
+            callback: (value: number) => {
+              let displayedValue = value + '%';
+              return displayedValue;
+            },
+            min: 0,
+            max: 110
+          },
+          afterTickToLabelConversion: (scale) => {
+            scale.ticks[0]=null;
+          }
         },
         {
           id: 'y-axis-portfolioType',
@@ -109,6 +136,7 @@ export class PortfolioTypeChartComponent implements OnInit {
       ],
     },
     tooltips: {
+      mode: 'nearest',
       callbacks: {
         label: (tooltipItem) => {
           let tooltipType = 'portfolioRequirement';
@@ -121,9 +149,9 @@ export class PortfolioTypeChartComponent implements OnInit {
               ? 'presentatie'
               : 'vorm';
           if (tooltipItem?.datasetIndex === 3) {
-            tooltipType = 'physical';
-          } else if (tooltipItem?.datasetIndex === 4) {
             tooltipType = 'digital';
+          } else if (tooltipItem?.datasetIndex === 4) {
+            tooltipType = 'physical';
           }
           const value: number =
             typeof tooltipItem?.yLabel === 'number' ? tooltipItem?.yLabel : 0;
@@ -136,23 +164,33 @@ export class PortfolioTypeChartComponent implements OnInit {
   chartColors: Color[] = [
     {
       // development = info color
-      backgroundColor: 'rgba(62,142,208,0.8)',
+      backgroundColor: 'rgba(62,142,208,1)',
     },
     {
       // evaluation = warning color
-      backgroundColor: 'rgba(255,71,15,0.8)',
+      backgroundColor: 'rgba(255,71,15,1)',
     },
     {
       // presentation = link color
-      backgroundColor: 'rgba(71,94,198,0.8)',
-    },
-    {
-      // physical = primary color
-      backgroundColor: 'rgba(72,199,142, 0.4)',
+      backgroundColor: 'rgba(71,94,198,1)',
     },
     {
       // digital = primary color
-      backgroundColor: 'rgba(72,199,142, 0.8)',
+      backgroundColor: 'rgba(72,199,142,0.5)',
+      borderColor: 'rgb(72,199,142, 0.8)',
+      pointBackgroundColor: 'rgb(72,199,142,0.6)',
+      pointBorderColor: 'rgb(72,199,142,0.6)',
+      pointHoverBackgroundColor: 'rgb(72,199,142,0.6)',
+      pointHoverBorderColor: 'rgba(72,199,142,0.6)',
+    },
+    {
+      // physical = primary color
+      backgroundColor: 'rgba(72,199,142,0.2)',
+      borderColor: 'rgb(72,199,142, 0.4)',
+      pointBackgroundColor: 'rgb(72,199,142,0.4)',
+      pointBorderColor: 'rgb(72,199,142,0.4)',
+      pointHoverBackgroundColor: 'rgb(72,199,142,0.4)',
+      pointHoverBorderColor: 'rgba(72,199,142,0.4)',
     },
   ];
   barChartType: ChartType = 'bar';
@@ -164,6 +202,7 @@ export class PortfolioTypeChartComponent implements OnInit {
   ngOnInit(): void {
     if (this.userState) {
       ['development', 'evaluation', 'presentation'].forEach((type, index) => {
+        this.chartData[index].data?.push(0);
         ['fourToSix', 'sevenToNine', 'tenToTwelve'].forEach((age) => {
           const hasAgeGroup = get(this.userState, ['ageGroupIsAvailable', age]);
           if(hasAgeGroup){
@@ -177,18 +216,18 @@ export class PortfolioTypeChartComponent implements OnInit {
           } else {
             this.chartData[index].data?.push(0);
           }
-
         });
+        this.chartData[index].data?.push(0);
       });
-      ['fourToSix', 'sevenToNine', 'tenToTwelve'].forEach((age) => {
+      ['fourToSix', 'fourToSix', 'sevenToNine', 'tenToTwelve', 'tenToTwelve'].forEach((age, index) => {
         const hasAgeGroup = get(this.userState, ['ageGroupIsAvailable', age]);
           if(hasAgeGroup){
             const value = get(this.userState, [
               'portfolioType',
               age,
             ]);
-            this.chartData[3].data?.push(100 - value);
-            this.chartData[4].data?.push(value);
+            this.chartData[3].data?.push(value);
+            this.chartData[4].data?.push(100-value);
           } else {
             this.chartData[3].data?.push(0);
             this.chartData[4].data?.push(0);

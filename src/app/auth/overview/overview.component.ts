@@ -9,6 +9,11 @@ import { Workbook, Worksheet } from 'exceljs';
 import * as fs from 'file-saver';
 import { get } from 'lodash';
 
+interface OverviewItem {
+  sidebarTitle: string;
+  title?: string;
+}
+
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
@@ -21,12 +26,23 @@ export class OverviewComponent implements OnInit {
   showMoscowInfoModal: boolean = false;
   pdfPreview: boolean = false;
   showLoader: boolean = false;
-  overviewItems: string[] = [
-    'Type portfolio',
-    'Bijdrage kind en ouders',
-    'Aanvullende eisen',
-    'Rapport maken',
-    'Tot slot',
+  overviewItems: OverviewItem[] = [
+    {
+      sidebarTitle: 'Type portfolio',
+      title: '<strong>Gewenste verhoudingen</strong> | Bouwstenen bij inhoud, functie en vorm portfolio.'
+    },
+    {
+      sidebarTitle: 'Bijdrage kind en ouders'
+    },
+    {
+      sidebarTitle: 'Aanvullende eisen'
+    },
+    {
+      sidebarTitle: 'Rapport maken'
+    },
+    {
+      sidebarTitle: 'Tot slot'
+    }
   ];
 
   constructor(private authService: AuthService) {}

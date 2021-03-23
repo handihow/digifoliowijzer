@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../auth.service';
-import { UserState } from '../user.state.model';
+import { UserState } from '../../auth/user.state.model';
 
 @Component({
   selector: 'app-component-step-buttons',

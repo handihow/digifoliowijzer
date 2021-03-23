@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../auth.service';
 
 @Component({
   selector: 'app-final-text',
@@ -8,13 +7,10 @@ import { AuthService } from '../../../auth.service';
 })
 export class FinalTextComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  logout(){
-    this.authService.logout();
-  }
 
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 import { HomeComponent } from './home/home.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
 	{
@@ -13,6 +14,10 @@ const routes: Routes = [
 	{
 		path: 'login',
 		component: HomeComponent
+	},
+  {
+		path: 'logout',
+		component: LogoutComponent
 	},
 	{
 		path: 'auth',

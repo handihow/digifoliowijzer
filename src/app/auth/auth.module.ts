@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthRoutingModule } from './auth.routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -15,7 +16,7 @@ import { MoscowButtonsComponent } from './moscow-buttons/moscow-buttons.componen
 import { MoscowInfoModalComponent } from './moscow-info-modal/moscow-info-modal.component';
 import { MoscowTitleColumnsComponent } from './moscow-title-columns/moscow-title-columns.component';
 import { QuestionsPageTwoComponent } from './requirements/questions-page-two/questions-page-two.component';
-import { ComponentStepButtonsComponent } from './component-step-buttons/component-step-buttons.component';
+
 import { QuestionsPageThreeComponent } from './requirements/questions-page-three/questions-page-three.component';
 import { QuestionsPageFourComponent } from './requirements/questions-page-four/questions-page-four.component';
 import { QuestionsPageFiveComponent } from './requirements/questions-page-five/questions-page-five.component';
@@ -33,19 +34,19 @@ import { MoscowTitleColumnComponent } from './moscow-title-column/moscow-title-c
 	  MoscowInfoModalComponent,
 	  MoscowTitleColumnsComponent,
 	  QuestionsPageTwoComponent,
-	  ComponentStepButtonsComponent,
 	  QuestionsPageThreeComponent,
 	  QuestionsPageFourComponent,
 	  QuestionsPageFiveComponent,
 	  BooleanColumnsSelectorComponent,
-	  MoscowTitleColumnComponent,
+	  MoscowTitleColumnComponent
   ],
   imports: [
     CommonModule,
     AngularFirestoreModule,
     RouterModule,
     FontAwesomeModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    SharedModule
   ],
   exports: []
 })

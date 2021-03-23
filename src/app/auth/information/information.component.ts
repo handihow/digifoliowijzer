@@ -23,7 +23,7 @@ export class InformationComponent implements OnInit, OnDestroy {
   informationItems: InformationItem[] = [
     {
       title: 'Digifoliowijzer',
-      highlightedText: 'De digifoliowijzer is één van de opbrengsten van de innovatievraag waarover je hier meer kunt lezen.',
+      highlightedText: "De digifoliowijzer is één van de opbrengsten van <a href='https://www.samenslimmerpo.nl/innovatievragen/hoe-kunnen-we-de-brede-ontwikkeling-van-leerlingen-monitoren-en-zichtbaar-maken' target=_blank>de innovatievraag vam LEV-WN</a>.",
       html: `
       <p>De digifoliowijzer is een webapp die je in enkele stappen tot een duidelijke ‘vraag’ richting ‘aanbod’ brengt.
       Ook voorzien we je daarbij van handvatten en ondersteunende materialen bij het verdiepen van je kennis,
@@ -37,6 +37,7 @@ export class InformationComponent implements OnInit, OnDestroy {
       highlightedText:
         '',
       html: `
+      <p>Je bent nu bij de ‘eerste stap’, waarbij je meer context krijgt bij inhoud van de digifoliowijzer en de achtergrond van de vraag die hiertoe heeft geleid.</p>
       <p>Bij stap: <strong>‘2. Onderzoeken en verdiepen’</strong> vind je theoretische kaders, die als fundament voor deze
       innovatievraag hebben gediend. Deze gaven het team inhoudelijk houvast en verdiepten het gesprek over
       wat paste bij de school. Ook vind je hier een download met ‘presentatiekaarten’ (kant-en-klare PowerPoint)

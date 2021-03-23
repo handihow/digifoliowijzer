@@ -38,15 +38,18 @@ export class ChoicesComponent implements OnInit, OnDestroy {
       modals: [],
       links: [],
       html: `
-      <p>Bij ‘visievorming’ vind je theoretische kaders, die als fundament voor deze innovatievraag hebben gediend.
-      Deze kunnen jou en je team inhoudelijke verdieping bieden.
-      Ook vind je hier een download met ‘presentatiekaarten’ (kant-en-klare PowerPoint) met een aantal
-      van die inhoudelijke kaders om te gebruiken bij teamsessies en beeldvorming.
-      Krachtig is ook de toolkit ‘Verkenning Digitale Portfolio’s’ van Kennisnet die je kunt downloaden en
-      gebruiken bij het bepalen van visie en focus. </p>
-      <p>Bij ‘marktverkenning’ vind je een marktoverzichten van aanbieders (PO) waarbij we je tot slot
-      grip geven en een eerste indruk van partijen welke je met jouw opbrengsten uit deze
-      tool zou kunnen benaderen.</p>
+      <p>Je vindt hier verschillende downloads om te gebruiken bij het inrichten van je proces op school, verdeeld over twee kopjes.</p>
+      <h6 class='title is-6'>Visievorming</h6>
+      <p>Bij dit kopje vind je:</p>
+      <div class='content'>
+        <ol>
+          <li>De toolkit ‘Verkenning Digitale Portfolio’s’, daarmee breng je in kaart hoe op school leerlingen worden begeleid in hun leerproces, en op welke momenten een digitaal portfolio hierin kan ondersteunen.</li>
+          <li>Theoretische kaders, deze kunnen jou en je team inhoudelijke kennis & verdieping bieden rondom (digitale) portfolio’s.</li>
+          <li>'Presentatiekaarten’, die je kunt aanpassen en gebruiken bij teamsessies en gezamenlijke beeldvorming rondom (digitale) portfolio’s.</li>
+        </ol>
+      </div>
+      <h6 class='title is-6'>Marktverkenning</h6>
+      <p>Bij dit kopje vind je een marktverkenning van aanbieders waarbij we je een eerste indruk en grip geven van partijen welke je met jouw opbrengsten uit deze tool zou kunnen benaderen. Zij hebben hiervoor zelf tekst en uitleg aangeleverd, inclusief contactgegevens.</p>
       `,
       image:
         'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/Square_lamp.png?alt=media&token=9010b0ea-639d-40a9-9010-40d1a6ffbc7f',
@@ -57,7 +60,7 @@ export class ChoicesComponent implements OnInit, OnDestroy {
       modals: [
         {
           title: 'Toolkit | Kennisnet | Verkenning Digitaal Portfolio',
-          image: 'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/4.png?alt=media&token=4cd6fecf-4003-40b3-98df-34f820b4dad1',
+          image: 'https://firebasestorage.googleapis.com/v0/b/digifoliowijzer.appspot.com/o/kaartje%20toolkit.png?alt=media&token=bc9c57e5-58f7-4dfe-88bb-6c3452d5c04a',
           links: [
             {
               title: 'Handleiding van Toolkit | Kennisnet | Verkenning Digitaal Portfolio',
