@@ -38,7 +38,7 @@ export class InformationComponent implements OnInit, OnDestroy {
       title: 'Per stap wijzer',
       highlightedText: '',
       html: `
-      <p>Je bent nu bij de <strong>eerste stap</strong>, waarbij je meer <strong>context</strong>, krijgt bij inhoud van de
+      <p>Je bent nu bij de <strong>eerste stap</strong>, waarbij je meer <strong>context</strong> krijgt bij inhoud van de
       <span class='is-italic'>digifoliowijzer</span> en de achtergrond van de vraag die hiertoe heeft geleid.</p>
       <p>Bij <strong>stap 2</strong> vind je theoretische kaders, een aan te passen <strong>presentatie</strong>
       voor bijeenkomsten en de <strong>toolkit</strong> <span class='is-italic'>Verkenning Digitale Portfolio’s</span>
