@@ -5,6 +5,7 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
 
+
 const routes: Routes = [
 	{
 		path: '',
@@ -21,8 +22,8 @@ const routes: Routes = [
 	},
 	{
 		path: 'auth',
-		loadChildren: () => import('./auth/auth.module').then(m => m.AuthenticatedModule),
-    canActivate: [AngularFireAuthGuard]
+		loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
+    canActivate: [AngularFireAuthGuard],
 	}
 ];
 

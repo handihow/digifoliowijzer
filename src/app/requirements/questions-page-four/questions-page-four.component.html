@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="container is-max-widescreen">
+    <app-table-title-columns
+      [titles]="titles"
+      (toggleModal)="openModal($event)"
+      ></app-table-title-columns>
+    <app-boolean-columns-selector
+      [rows]="rows"
+      [columns]="columns"
+      [property]="property"
+      [userState]="userState"
+    ></app-boolean-columns-selector>
+  </div>
+</section>
+<app-component-step-buttons buttonColorClass="is-primary"></app-component-step-buttons>
+<div class="modal" [ngClass]="{ 'is-active': showModal }">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{{ modalTitle }}</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="toggleModal()"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <blockquote>
+          <span class="is-italic">{{ modalHighlight }}</span>
+        </blockquote>
+        <p>{{ modalText }}</p>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="toggleModal()">
+        Duidelijk
+      </button>
+    </footer>
+  </div>
+</div>

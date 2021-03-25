@@ -1,0 +1,9 @@
+<div class="columns is-mobile">
+  <div class="column" *ngFor="let title of titles; let i = index">
+    <app-table-title-column
+    [title]="title"
+    [index]="i"
+    (toggleModal)="openModal($event)"
+      ></app-table-title-column>
+  </div>
+</div>

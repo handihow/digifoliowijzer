@@ -1,14 +1,23 @@
-import { Component, Input } from '@angular/core';
-import { UserState } from './user.state.model';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { Router, NavigationEnd } from '@angular/router';
+
+import { filter } from 'rxjs/operators';
+import firebase from 'firebase/app';
+
+import { UserState } from '../models/user.state.model';
 
 @Component({
   selector: 'app-authenticated',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css'],
 })
-export class AuthenticatedComponent  {
-  @Input() userState: UserState | undefined;
-  @Input() currentUrl: string = '/auth/information';
+export class AuthenticatedComponent  implements OnInit, OnDestroy {
+  stateSub: Subscription | undefined;
+  routerSub: Subscription | undefined;
+  userState: UserState | undefined;
+  currentUrl: string = '/auth/information';
   controls: any = {
     '/auth/information': {
       step: 1,
@@ -40,6 +49,35 @@ export class AuthenticatedComponent  {
     },
   };
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(){
+    this.stateSub = this.authService.userState.subscribe(state => {
+      if(state.id.length === 0) return;
+      this.userState = state;
+      this.currentUrl = state.currentPage;
+    })
+    this.routerSub = this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((_event) => {
+        if (this.userState) {
+          this.authService.updateUserState({
+            ...this.userState,
+            updatedAt: firebase.firestore.Timestamp.now(),
+            currentPage: this.router.url,
+            componentStep: this.router.url === this.userState.currentPage ? (this.userState.componentStep || 1) : 1
+          });
+        }
+      });
+  }
+
+  ngOnDestroy(){
+    if(this.stateSub){
+      this.stateSub.unsubscribe();
+    }
+    if (this.routerSub) {
+      this.routerSub.unsubscribe();
+    }
+  }
 
 }

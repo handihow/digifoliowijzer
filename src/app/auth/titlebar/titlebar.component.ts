@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { AuthService } from '../../auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-titlebar',
