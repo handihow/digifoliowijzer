@@ -1,0 +1,14 @@
+<section class="section">
+  <div class="container is-max-widescreen">
+    <app-table-title-columns
+      [titles]="titles"
+      (toggleModal)="openModal($event)"
+      ></app-table-title-columns>
+    <app-boolean-columns-selector
+      [rows]="rows"
+      [columns]="columns"
+      [property]="property"
+      [userState]="userState"
+    ></app-boolean-columns-selector>
+  </div>
+</section>

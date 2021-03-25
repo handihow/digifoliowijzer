@@ -1,0 +1,26 @@
+<div class="modal" [ngClass]="{ 'is-active': modalContent?.showModal}">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{{ modalContent?.title }}</p>
+      <button
+        class="delete"
+        aria-label="close"
+        (click)="closeModal()"
+      ></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <blockquote>
+          <span class="is-italic">{{ modalContent?.highlight  }}</span>
+        </blockquote>
+        <p>{{ modalContent?.text  }}</p>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="closeModal()">
+        Duidelijk
+      </button>
+    </footer>
+  </div>
+</div>

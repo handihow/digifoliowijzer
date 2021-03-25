@@ -1,0 +1,67 @@
+<section class="section pb-2">
+  <div class="container is-max-widescreen">
+    <div class="columns">
+      <div class="column is-3">
+        <aside class="menu">
+          <ul class="menu-list">
+            <li *ngFor="let item of choiceItems">
+              <a
+                (click)="setStep(item.step)"
+                [ngClass]="step === item.step ? 'is-active' : ''"
+                >{{ item.title }}</a
+              >
+            </li>
+          </ul>
+        </aside>
+        <div class="image-container">
+          <figure class="image is-square mt-4 is-hidden-mobile">
+            <img [src]="getImage()" />
+          </figure>
+        </div>
+      </div>
+      <div class="column">
+        <h4 class="title is-4">{{ getTitle() }}</h4>
+        <div class="content" [innerHTML]="getHTML()"></div>
+      </div>
+      <div class="column is-3" *ngIf="hasLinks()">
+        <div class="box p-2 m-2" *ngFor="let modal of getModals(); let i=index" (click)="setModalContent(i)">
+          <figure class="image is-5by2" >
+            <img [src]="modal.image" [alt]="modal.title"/>
+          </figure>
+        </div>
+        <a class="box p-2 m-2" *ngFor="let link of getLinks()" [href]="link.href" target="_blank">
+          <figure class="image is-5by2">
+            <img [src]="link.image" [alt]="link.alt" />
+          </figure>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal" [ngClass]="{ 'is-active': showModal }">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Beschikbare downloads</p>
+      <button class="delete" aria-label="close" (click)="toggleModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <p>Je kunt hier de volgende documenten downloaden:</p>
+        <ul>
+          <li *ngFor="let link of modalLinks">
+            <a [href]="link.href" target=_blank>
+              {{link.title}}
+            </a>
+          </li>
+        </ul>
+        <p>{{additionalModalInformation}}</p>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="toggleModal()">Sluiten</button>
+    </footer>
+  </div>
+</div>
+

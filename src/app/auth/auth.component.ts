@@ -7,6 +7,8 @@ import { filter } from 'rxjs/operators';
 import firebase from 'firebase/app';
 
 import { UserState } from '../models/user.state.model';
+import Settings  from './settings';
+import AuthSection from '../models/auth.section.model';
 
 @Component({
   selector: 'app-authenticated',
@@ -18,36 +20,8 @@ export class AuthenticatedComponent  implements OnInit, OnDestroy {
   routerSub: Subscription | undefined;
   userState: UserState | undefined;
   currentUrl: string = '/auth/information';
-  controls: any = {
-    '/auth/information': {
-      step: 1,
-      title: 'Achtergrond',
-      color: 'is-warning',
-      previousPage: null,
-      nextPage: '/auth/choices',
-    },
-    '/auth/choices': {
-      step: 2,
-      title: 'Onderzoeken en verdiepen',
-      color: 'is-link',
-      previousPage: 'auth/information',
-      nextPage: '/auth/requirements',
-    },
-    '/auth/requirements': {
-      step: 3,
-      title: 'Set van eisen',
-      color: 'is-primary',
-      previousPage: '/auth/choices',
-      nextPage: '/auth/overview',
-    },
-    '/auth/overview': {
-      step: 4,
-      title: 'Overzicht en rapport',
-      color: 'is-success',
-      previousPage: 'auth/requirements',
-      nextPage: null,
-    },
-  };
+  sections: AuthSection[] = Settings.authSections;
+  currentSection: AuthSection | undefined;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -56,6 +30,7 @@ export class AuthenticatedComponent  implements OnInit, OnDestroy {
       if(state.id.length === 0) return;
       this.userState = state;
       this.currentUrl = state.currentPage;
+      this.currentSection = this.sections.find(s => s.currentPage === state.currentPage);
     })
     this.routerSub = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))

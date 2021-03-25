@@ -1,5 +1,6 @@
-<app-stepper [step]="controls[currentUrl]?.step"></app-stepper>
-<app-titlebar [title]="controls[currentUrl]?.title"
-			  [subtitle]="controls[currentUrl]?.subtitle"
-				[color]="controls[currentUrl]?.color"></app-titlebar>
+<app-stepper></app-stepper>
+<app-titlebar [title]="currentSection?.title"
+				[color]="currentSection?.color"></app-titlebar>
 <router-outlet></router-outlet>
+<app-component-step-buttons></app-component-step-buttons>
+

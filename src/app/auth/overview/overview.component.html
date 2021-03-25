@@ -1,0 +1,86 @@
+<section class="section" *ngIf="userState?.isFinished && !pdfPreview">
+  <div class="container is-max-widescreen">
+    <div class="columns">
+      <div class="column is-3">
+        <aside class="menu">
+          <ul class="menu-list">
+            <li *ngFor="let item of overviewItems; let i = index">
+              <a
+                (click)="setStep(i + 1)"
+                [ngClass]="step === i + 1 ? 'is-active' : ''"
+                >{{ item.sidebarTitle }}</a
+              >
+            </li>
+          </ul>
+        </aside>
+      </div>
+      <div class="column">
+        <div
+          class="mb-5 is-size-5"
+          *ngIf="overviewItems[step-1].title" [innerHTML]="overviewItems[step-1].title"></div>
+        <h3 class="title is-5 mb-5" *ngIf="!overviewItems[step-1].title">{{ overviewItems[step - 1].sidebarTitle }}</h3>
+        <app-portfolio-type-chart
+          *ngIf="step === 1 && userState"
+          [userState]="userState"
+        ></app-portfolio-type-chart>
+        <app-child-parent-contribution
+          *ngIf="step === 2 && userState"
+          [userState]="userState"
+        ></app-child-parent-contribution>
+        <app-additional-requirements
+          *ngIf="step === 3 && userState"
+          [userState]="userState"
+        ></app-additional-requirements>
+        <app-create-report
+          *ngIf="step == 4"
+          (generatePdf)="generatePDF()"
+          (generateExcel)="generateExcel()"
+        ></app-create-report>
+        <app-final-text *ngIf="step == 5"></app-final-text>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" *ngIf="!userState?.isFinished && !pdfPreview">
+  <div class="container is-max-widescreen">
+    <h1 class="title is-3">Ben je al klaar?</h1>
+    <h5 class="subtitle is-5">
+      Het lijkt erop dat je nog niet alle vragen hebt beantwoord...
+    </h5>
+    <div class="buttons are-medium">
+      <a class="button is-success" routerLink="/auth/requirements">
+        Naar set van eisen
+      </a>
+      <button class="button is-warning" (click)="onFinish()">
+        Toch resultaten bekijken
+      </button>
+    </div>
+  </div>
+</section>
+
+<div [ngClass]="['pageloader is-warning', showLoader ? 'is-active' : '']">
+  <span class="title">Even geduld aub...</span>
+</div>
+
+<section *ngIf="pdfPreview">
+  <div class="pdf__page" id="page1">
+    <h1 class="title is-1">digifoliowijzer</h1>
+    <app-portfolio-type-chart
+      [userState]="userState"
+      [pdfPreview]="pdfPreview"
+    ></app-portfolio-type-chart>
+    <app-child-parent-contribution
+      [userState]="userState"
+      [pdfPreview]="pdfPreview"
+    ></app-child-parent-contribution>
+    <div class="pdf__footer">Digifoliowijzer resultaten - pagina 1</div>
+  </div>
+  <div class="pdf__page" id="page2">
+    <app-additional-requirements
+      [userState]="userState"
+      [pdfPreview]="pdfPreview"
+    ></app-additional-requirements>
+    <div class="pdf__footer">Digifoliowijzer resultaten - pagina 2</div>
+  </div>
+</section>

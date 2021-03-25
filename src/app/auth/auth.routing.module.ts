@@ -13,22 +13,22 @@ const routes: Routes = [
     children: [
       {
         path: 'information',
-        loadChildren: () => import('../information/information.module').then(m => m.InformationModule),
+        loadChildren: () => import('./information/information.module').then(m => m.InformationModule),
         ...canActivate(redirectUnauthorizedToLogin),
       },
       {
         path: 'choices',
-        loadChildren: () => import('../choices/choices.module').then(m => m.ChoicesModule),
+        loadChildren: () => import('./choices/choices.module').then(m => m.ChoicesModule),
         ...canActivate(redirectUnauthorizedToLogin)
       },
       {
         path: 'requirements',
-        loadChildren: () => import('../requirements/requirements.module').then(m => m.RequirementsModule),
+        loadChildren: () => import('./requirements/requirements.module').then(m => m.RequirementsModule),
         ...canActivate(redirectUnauthorizedToLogin)
       },
       {
         path: 'overview',
-        loadChildren: () => import('../overview/overview.module').then(m => m.OverviewModule),
+        loadChildren: () => import('./overview/overview.module').then(m => m.OverviewModule),
         ...canActivate(redirectUnauthorizedToLogin)
       },
       {

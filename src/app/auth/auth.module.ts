@@ -4,14 +4,16 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthRoutingModule } from './auth.routing.module';
 
-import { StepperComponent } from './stepper/stepper.component';
-import { TitlebarComponent } from './titlebar/titlebar.component';
+import { StepperComponent } from './partials/stepper/stepper.component';
+import { TitlebarComponent } from './partials/titlebar/titlebar.component';
+import { ComponentStepButtonsComponent } from './partials/component-step-buttons/component-step-buttons.component';
 import { AuthenticatedComponent } from './auth.component';
 
 @NgModule({
   declarations: [
     StepperComponent,
     TitlebarComponent,
+    ComponentStepButtonsComponent,
     AuthenticatedComponent
   ],
   imports: [

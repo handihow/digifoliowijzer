@@ -17,14 +17,16 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LogoutComponent } from './logout/logout.component';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './partials/footer/footer.component';
+import { InfoModalComponent } from './partials/info-modal/info-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LogoutComponent,
-    FooterComponent
+    FooterComponent,
+    InfoModalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<div class="pt-5 pb-3">
+  <ul class="steps has-content-centered has-gaps is-horizontal">
+    <li class="steps-segment" routerLinkActive='is-active' *ngFor="let section of sections">
+      <a [routerLink]="section.currentPage">
+        <span [ngClass]="['steps-marker', section.color]">{{section.step}}</span>
+        <div class="steps-content">
+          <div class="is-size-6 has-text-dark">{{section.title}}</div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>

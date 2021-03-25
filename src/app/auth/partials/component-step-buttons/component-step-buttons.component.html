@@ -1,0 +1,26 @@
+<section class="section pt-2">
+  <div class="container is-max-widescreen">
+    <div class="is-flex is-justify-content-space-between">
+      <button
+        [ngClass]="['button', 'is-light', currentSection?.color ? currentSection?.color : '', step === 1 ? 'is-hidden' : '']"
+        (click)="setStep(-1)"
+        [disabled]="step === 1"
+      >
+        Terug
+      </button>
+      <div [ngClass]="[step === 1 ? '' : 'is-hidden']"></div>
+      <button
+        [ngClass]="['button', 'is-medium', currentSection?.color ? currentSection?.color : '', step === currentSection?.steps ? 'is-hidden' : '']"
+        (click)="setStep(1)"
+      >
+        Volgende
+      </button>
+      <button
+        (click)="onLastStep()"
+        [ngClass]="['button', 'is-medium is-success', step !== currentSection?.steps ? 'is-hidden' : '']"
+      >
+        {{ currentSection?.nextPageButtonText }}
+      </button>
+    </div>
+  </div>
+</section>
